@@ -27,5 +27,15 @@ namespace MAutoSS.Data
         public virtual IDbSet<Car> Cars { get; set; }
 
         public virtual IDbSet<CarFeature> CarFeatures { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Dealership>()
+                .HasOptional(d => d.Address)
+                .WithRequired(a => a.Dealership);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
