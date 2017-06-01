@@ -1,8 +1,8 @@
+using System.Data.Entity.Migrations;
+
 namespace MAutoSS.Data.Migrations
 {
-    using System.Data.Entity.Migrations;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<MAutoSSDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<MAutoSSDbContext>
     {
         public Configuration()
         {
