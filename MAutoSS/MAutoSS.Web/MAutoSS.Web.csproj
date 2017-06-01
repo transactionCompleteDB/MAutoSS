@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,6 +211,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MAutoSS.DataModels\MAutoSS.DataModels.csproj">
+      <Project>{f38b81b1-8744-4137-8966-515e87cda9b6}</Project>
+      <Name>MAutoSS.DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAutoSS.Data\MAutoSS.Data.csproj">
+      <Project>{604ed7b5-3a1f-42dc-9ab8-4c7729951fbd}</Project>
+      <Name>MAutoSS.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

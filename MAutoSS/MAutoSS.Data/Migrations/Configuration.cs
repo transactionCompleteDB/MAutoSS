@@ -25,5 +25,6 @@ namespace MAutoSS.Data.Migrations
             //    );
             //
         }
+
     }
 }
