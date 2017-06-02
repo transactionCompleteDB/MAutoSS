@@ -1,5 +1,6 @@
 ﻿using MAutoSS.DataModels.Enums;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MAutoSS.DataModels
@@ -24,17 +25,19 @@ namespace MAutoSS.DataModels
         public int Mileage{ get; set; }
 
         [Required]
-        public FuelType FuelType { get; set; }
+        public virtual FuelType FuelType { get; set; }
 
         [Required]
-        public VehicleType VehicleType { get; set; }
+        public virtual VehicleType VehicleType { get; set; }
 
         [Required]
-        public TransimssionType TransimssionType { get; set; }
+        public virtual TransimssionType TransimssionType { get; set; }
 
         public int SaleId { get; set; }
 
+        public Sale Sale { get; set; }
 
+        public virtual ICollection<Cars_CarFeatures> Cars_CarFeatures { get; set; }
 
     }
 }
