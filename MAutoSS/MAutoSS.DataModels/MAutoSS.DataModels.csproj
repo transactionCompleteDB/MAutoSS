@@ -54,6 +54,9 @@
     <Compile Include="Country.cs" />
     <Compile Include="Dealership.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Enums\FuelType.cs" />
+    <Compile Include="Enums\TransimssionType.cs" />
+    <Compile Include="Enums\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sale.cs" />
   </ItemGroup>
