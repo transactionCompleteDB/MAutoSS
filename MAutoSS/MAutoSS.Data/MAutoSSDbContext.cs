@@ -1,9 +1,11 @@
-﻿using MAutoSS.DataModels;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+
+using MAutoSS.Data.Contracts;
+using MAutoSS.DataModels;
 
 namespace MAutoSS.Data
 {
-    public class MAutoSSDbContext : DbContext
+    public class MAutoSSDbContext : DbContext, IMAutoSSDbContext
     {
         public MAutoSSDbContext()
             : base("MAutoSS")
