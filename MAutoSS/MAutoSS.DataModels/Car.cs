@@ -7,8 +7,12 @@ namespace MAutoSS.DataModels
 {
     public class Car
     {
-        public int Id { get; set; }
+        public Car()
+        {
+            this.CarFeatures = new HashSet<CarFeature>();
+        }
 
+        public int Id { get; set; }
 
         [Required]
         [MinLength(1)]
@@ -37,7 +41,7 @@ namespace MAutoSS.DataModels
 
         public Sale Sale { get; set; }
 
-        public virtual ICollection<Cars_CarFeatures> Cars_CarFeatures { get; set; }
+        public virtual ICollection<CarFeature> CarFeatures { get; set; }
 
     }
 }

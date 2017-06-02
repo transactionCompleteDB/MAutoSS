@@ -6,6 +6,11 @@ namespace MAutoSS.DataModels
 {
     public class CarFeature
     {
+        public CarFeature()
+        {
+            this.Cars = new HashSet<Car>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -13,6 +18,6 @@ namespace MAutoSS.DataModels
         [MaxLength(100)]
         public string Description { get; set; }
 
-        public virtual ICollection<Cars_CarFeatures> Cars_CarFeatures { get; set; }
+        public virtual ICollection<Car> Cars { get; set; }
     }
 }
