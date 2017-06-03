@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MAutoSS.ExportGenerator.Contracts
+namespace MAutoSS.ReportGenerator.Contracts
 {
     public interface IReportGenerator
     {

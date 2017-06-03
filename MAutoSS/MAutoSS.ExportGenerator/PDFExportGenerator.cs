@@ -1,9 +1,9 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using MAutoSS.ExportGenerator.Contracts;
+using MAutoSS.ReportGenerator.Contracts;
 using System.IO;
 
-namespace MAutoSS.ExportGenerator
+namespace MAutoSS.ReportGenerator
 {
     public class PDFReportGenerator : IReportGenerator
     {
