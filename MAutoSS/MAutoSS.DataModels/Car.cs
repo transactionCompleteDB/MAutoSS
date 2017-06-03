@@ -7,6 +7,8 @@ namespace MAutoSS.DataModels
 {
     public class Car
     {
+        private ICollection<CarFeature> carFeatures;
+
         public Car()
         {
             this.CarFeatures = new HashSet<CarFeature>();
@@ -41,7 +43,10 @@ namespace MAutoSS.DataModels
 
         public Sale Sale { get; set; }
 
-        public virtual ICollection<CarFeature> CarFeatures { get; set; }
-
+        public virtual ICollection<CarFeature> CarFeatures
+        {
+            get { return this.carFeatures; }
+            set { this.carFeatures = value; }
+        }
     }
 }
