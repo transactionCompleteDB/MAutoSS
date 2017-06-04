@@ -1,7 +1,8 @@
-﻿using MAutoSS.DataModels.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+
+using MAutoSS.DataModels.Enums;
 
 namespace MAutoSS.DataModels
 {
@@ -11,7 +12,7 @@ namespace MAutoSS.DataModels
 
         public Car()
         {
-            this.CarFeatures = new HashSet<CarFeature>();
+            this.carFeatures = new HashSet<CarFeature>();
         }
 
         public int Id { get; set; }
