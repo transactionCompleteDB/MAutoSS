@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+footer {
+    text-align: center;
+}
+
+.jumbotron {
+    background-image: url("./imgs/welcome-image.jpg");
+    background-size: 125% 350%;
+    background-position: center;
+    height: auto;
+    width: 100%;
+}
+
+.jumbotron > div {
+    position: relative;
+    width: 50%;
+    top: -103px;
+    left: -5%;
+}
