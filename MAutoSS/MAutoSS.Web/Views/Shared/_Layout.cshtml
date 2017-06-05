@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -16,11 +18,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MAutoSS", "Index", "Home", new { @class = "navbar-brand" })
+                @Html.ActionLink("MAutoSS", "Index", "Home", new { controller = "Home"}, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Dealerships", "Index", "Dealerships")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
@@ -34,7 +36,7 @@
             <p>&copy; @DateTime.Now.Year - MAutoSS App</p>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/jquery")
+ 
     @RenderSection("scripts", required: false)
 </body>
 </html>
