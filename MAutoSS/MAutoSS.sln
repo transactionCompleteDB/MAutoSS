@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAutoSS.Data", "MAutoSS.Data\MAutoSS.Data.csproj", "{604ED7B5-3A1F-42DC-9AB8-4C7729951FBD}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAutoSS.Web", "MAutoSS.Web\MAutoSS.Web.csproj", "{CB3539F7-B594-49EB-AF6C-005A2A93B5B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAutoSS.ExportGenerator", "MAutoSS.ExportGenerator\MAutoSS.ExportGenerator.csproj", "{E1A233BB-2D07-438D-A491-2FD1BBABD80A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAutoSS.Services", "MAutoSS.Services\MAutoSS.Services.csproj", "{9C4297B3-C8E9-4DC8-BE7B-18B21C8A7706}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +41,10 @@ Global
 		{E1A233BB-2D07-438D-A491-2FD1BBABD80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A233BB-2D07-438D-A491-2FD1BBABD80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A233BB-2D07-438D-A491-2FD1BBABD80A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA675A6E-B041-494F-A839-3960F822254B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA675A6E-B041-494F-A839-3960F822254B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA675A6E-B041-494F-A839-3960F822254B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA675A6E-B041-494F-A839-3960F822254B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C4297B3-C8E9-4DC8-BE7B-18B21C8A7706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4297B3-C8E9-4DC8-BE7B-18B21C8A7706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C4297B3-C8E9-4DC8-BE7B-18B21C8A7706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C4297B3-C8E9-4DC8-BE7B-18B21C8A7706}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
