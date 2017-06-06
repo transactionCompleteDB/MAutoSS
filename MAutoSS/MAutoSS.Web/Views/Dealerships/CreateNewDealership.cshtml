@@ -1,0 +1,50 @@
+﻿@model MAutoSS.Web.Models.Dealership.DealershipInputModel
+
+@{
+    ViewBag.Title = "Dealerships";
+}
+
+@Html.Partial("DealershipOptionsPartial")
+
+@using (Html.BeginForm("CreateNewDealership", "Dealerships", FormMethod.Post, new { @class = "form-group center-form" }))
+{
+    <form class="form-horizontal dealership-form">
+        <fieldset class="form-group row">
+            <legend>Add new dealership</legend>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Address.AddressText, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.Address.AddressText, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Address.City.Name, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.Address.City.Name, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Address.City.Country.Name, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.Address.City.Country.Name, new { @class = "form-control" })
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-outline-primary submit-new-dealership" value="Create" />
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+
+}
