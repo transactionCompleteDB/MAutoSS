@@ -7,5 +7,7 @@ namespace MAutoSS.Services.Contracts
     public interface IDealershipService
     {
         IEnumerable<Dealership> GetAllDealerships();
+
+        void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName);
     }
 }
