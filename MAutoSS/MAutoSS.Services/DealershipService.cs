@@ -12,22 +12,18 @@ namespace MAutoSS.Services
         private IGenericRepository<Address> addressRepo;
         private IGenericRepository<City> citiesRepo;
         private IGenericRepository<Country> countriesRepo;
-        private IDealershipService dealershipService;
-        private IUnitOfWork unitOfWork;
+
 
         public DealershipService(
             IGenericRepository<Dealership> dealershipRepo,
             IGenericRepository<Address> addressRepo,
             IGenericRepository<City> citiesRepo,
-            IGenericRepository<Country> countriesRepo,
-            IDealershipService dealershipService,
-            IUnitOfWork unitOfWork)
+            IGenericRepository<Country> countriesRepo)
         {
             this.dealershipRepo = dealershipRepo;
             this.addressRepo = addressRepo;
             this.citiesRepo = citiesRepo;
             this.countriesRepo = countriesRepo;
-            this.dealershipService = dealershipService;
         }
 
         public IEnumerable<Dealership> GetAllDealerships()
@@ -42,33 +38,45 @@ namespace MAutoSS.Services
                 Name = countryName
             };
 
+            this.countriesRepo.Add(country);
+            this.countriesRepo.SaveChanges();
+
             var city = new City
             {
                 Name = cityName,
                 CountryId = country.Id
             };
 
+            this.citiesRepo.Add(city);
+            this.citiesRepo.SaveChanges();
+
+  
+            var dealership = new Dealership
+            {
+                Name = dealershipName
+            };
+
+            this.dealershipRepo.Add(dealership);
+            this.dealershipRepo.SaveChanges();
+
             var address = new Address
             {
+                Id = dealership.Id,
                 AddressText = addressText,
                 CityId = city.Id
             };
 
-            var dealership = new Dealership
-            {
-                Name = dealershipName,
-                AddressId = address.Id
-            };
+            this.addressRepo.Add(address);
+            this.addressRepo.SaveChanges();
 
 
-            using (IUnitOfWork unitOfWork = this.unitOfWork)
-            {
-                this.countriesRepo.Add(country);
-                this.citiesRepo.Add(city);
-                this.addressRepo.Add(address);
-                this.dealershipRepo.Add(dealership);
-                this.unitOfWork.Commit();
-            }
+
+
+
+
+
+
+
         }
     }
 }

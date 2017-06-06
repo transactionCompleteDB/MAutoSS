@@ -1,4 +1,5 @@
-﻿using MAutoSS.Services.Contracts;
+﻿using MAutoSS.Data.Repositories.Contracts;
+using MAutoSS.Services.Contracts;
 using MAutoSS.Web.Models.Dealership;
 using System.Web.Mvc;
 
@@ -7,11 +8,6 @@ namespace MAutoSS.Web.Controllers
     public class DealershipsController : Controller
     {
         private IDealershipService dealershipService;
-
-        public DealershipsController()
-        {
-
-        }
 
         public DealershipsController(IDealershipService dealershipService)
         {
@@ -44,6 +40,7 @@ namespace MAutoSS.Web.Controllers
                 model.Address.AddressText,
                 model.Address.City.Name,
                 model.Address.City.Country.Name);
+
 
 
             return null;
