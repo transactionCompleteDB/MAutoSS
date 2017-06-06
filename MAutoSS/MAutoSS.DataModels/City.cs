@@ -23,6 +23,10 @@ namespace MAutoSS.DataModels
             get { return this.adresses; }
             set { this.adresses = value;}
         }
+
+        public int CountryId { get; set; }
+
+        public virtual Country Country { get; set; }
     }
 
 

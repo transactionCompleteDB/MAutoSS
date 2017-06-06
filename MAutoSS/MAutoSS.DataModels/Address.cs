@@ -16,5 +16,9 @@ namespace MAutoSS.DataModels
         public int DealershipId { get; set; }
 
         public virtual Dealership Dealership { get; set; }
+
+        public int CityId { get; set; }
+
+        public virtual City City { get; set; }
     }
 }
