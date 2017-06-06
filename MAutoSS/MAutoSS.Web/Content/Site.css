@@ -45,3 +45,9 @@ footer {
 .dealerships-container {
     padding-top: 5%;
 }
+
+.center-form {
+    padding-top: 2%;
+    margin: 0 auto;
+    width: 20%;
+}

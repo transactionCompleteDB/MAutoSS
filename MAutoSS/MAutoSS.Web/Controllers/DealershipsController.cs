@@ -1,84 +1,55 @@
-﻿using System.Web.Mvc;
+﻿using MAutoSS.Services.Contracts;
+using MAutoSS.Web.Models.Dealership;
+using System.Web.Mvc;
 
 namespace MAutoSS.Web.Controllers
 {
     public class DealershipsController : Controller
     {
+        private IDealershipService dealershipService;
+
+        public DealershipsController()
+        {
+
+        }
+
+        public DealershipsController(IDealershipService dealershipService)
+        {
+            this.dealershipService = dealershipService;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Dealerships/Details/5
-        public ActionResult Details(int id)
+        
+        [HttpGet]
+        public ActionResult CreateNewDealership()
         {
             return View();
         }
 
-        // GET: Dealerships/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Dealerships/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateNewDealership(DealershipInputModel model)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                //TODO: think what message to use
+                return null;
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            this.dealershipService.CreateNewDealership(
+                model.Name,
+                model.Address.AddressText,
+                model.Address.City.Name,
+                model.Address.City.Country.Name);
+
+
+            return null;
+
         }
 
-        // GET: Dealerships/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Dealerships/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Dealerships/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Dealerships/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
