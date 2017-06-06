@@ -13,8 +13,6 @@ namespace MAutoSS.DataModels
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
-        public int AddressId { get; set; }
-
         public virtual Address Address { get; set; }
     }
 }

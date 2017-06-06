@@ -13,8 +13,6 @@ namespace MAutoSS.DataModels
         [Index(IsUnique = true)]
         public string AddressText { get; set; }
 
-        public int DealershipId { get; set; }
-
         public virtual Dealership Dealership { get; set; }
 
         public int CityId { get; set; }

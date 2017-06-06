@@ -33,11 +33,12 @@ namespace MAutoSS.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Address>()
+                .HasKey(x => x.Id);
+
             modelBuilder.Entity<Dealership>()
                 .HasOptional(d => d.Address)
                 .WithRequired(a => a.Dealership);
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }
