@@ -67,5 +67,15 @@ namespace MAutoSS.Data.Repositories
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
         }
+
+        public int SaveChanges()
+        {
+            return this.Context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            this.Context.Dispose();
+        }
     }
 }
