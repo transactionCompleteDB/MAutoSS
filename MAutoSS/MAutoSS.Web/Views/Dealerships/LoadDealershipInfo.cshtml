@@ -2,16 +2,20 @@
 
 @Html.Partial("DealershipOptionsPartial")
 
-@(Html.Kendo().Grid(Model)
+<div class="container-fluid dealerships-container">
+    <div class="row">
+        <h3>Dealerships info</h3>
+    </div>
+    @(Html.Kendo().Grid(Model)
     .Name("Grid")
     .Columns(columns =>
     {
-        columns.Bound(d => d.Name).Title("Dealership Name").Width(200);
-        columns.Bound(d => d.NumberOfEmployees).Title("Number of employees").Width(200);
-        columns.Bound(d => d.NumberOfCars).Title("Number of cars").Width(200);
-        columns.Bound(d => d.Address.AddressText).Title("Address").Width(200);
-        columns.Bound(d => d.Address.City.Name).Title("City").Width(200);
-        columns.Bound(d => d.Address.City.Country.Name).Title("Country").Width(200);
+        columns.Bound(d => d.Name).Title("Dealership Name").Width(190);
+        columns.Bound(d => d.NumberOfEmployees).Title("Number of employees").Width(190);
+        columns.Bound(d => d.NumberOfCars).Title("Number of cars").Width(190);
+        columns.Bound(d => d.Address.AddressText).Title("Address").Width(190);
+        columns.Bound(d => d.Address.City.Name).Title("City").Width(190);
+        columns.Bound(d => d.Address.City.Country.Name).Title("Country").Width(190);
 
     })
     .HtmlAttributes(new { style = "height: 550px;" })
@@ -27,4 +31,5 @@
         .PageSize(20)
         .ServerOperation(false)
      )
-)
+    )
+</div>
