@@ -3,6 +3,7 @@
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
+using System.Linq;
 
 namespace MAutoSS.Services
 {
@@ -30,6 +31,17 @@ namespace MAutoSS.Services
         {
             return this.dealershipRepo.GetAll();
         }
+
+        public IEnumerable<string> GetAllDealershipsNames()
+        {
+            return this.dealershipRepo.GetAll().Select(x => x.Name);
+        }
+
+        public Dealership GetDealershipIdByName(string name)
+        {
+            return this.dealershipRepo.GetAll().FirstOrDefault(x => x.Name == name);
+        }
+
 
         public void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName)
         {
