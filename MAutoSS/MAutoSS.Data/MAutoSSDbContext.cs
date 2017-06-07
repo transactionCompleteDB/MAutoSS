@@ -9,9 +9,7 @@ namespace MAutoSS.Data
     {
         public MAutoSSDbContext()
             : base("MAutoSS")
-
         {
-
         }
 
         public virtual IDbSet<Dealership> Dealerships { get; set; }

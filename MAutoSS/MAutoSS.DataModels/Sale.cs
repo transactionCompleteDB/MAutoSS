@@ -1,15 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MAutoSS.DataModels
 {
     public class Sale
     {
+        private ICollection<Car> cars;
+
+        public Sale()
+        {
+            this.cars = new HashSet<Car>();
+        }
+
         public int Id { get; set; }
 
-        [Required]
         public int EmployeeId { get; set; }
 
-        [Required]
+
         public Employee Employee { get; set; }
+
+        public ICollection<Car> Cars { get; set; }
     }
 }
