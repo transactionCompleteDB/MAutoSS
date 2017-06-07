@@ -50,7 +50,7 @@ namespace MAutoSS.Services
             this.citiesRepo.Add(city);
             this.citiesRepo.SaveChanges();
 
-  
+
             var dealership = new Dealership
             {
                 Name = dealershipName
@@ -68,15 +68,6 @@ namespace MAutoSS.Services
 
             this.addressRepo.Add(address);
             this.addressRepo.SaveChanges();
-
-
-
-
-
-
-
-
-
         }
     }
 }
