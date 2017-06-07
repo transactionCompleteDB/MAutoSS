@@ -74,6 +74,8 @@ namespace MAutoSS.Web.App_Start
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
 
             kernel.Bind<IDealershipService>().To<DealershipService>().InRequestScope();
+            kernel.Bind<IEmployeeService>().To<EmployeeService>().InRequestScope();
+            
 
         }
     }
