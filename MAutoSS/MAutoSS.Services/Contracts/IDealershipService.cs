@@ -8,6 +8,10 @@ namespace MAutoSS.Services.Contracts
     {
         IEnumerable<Dealership> GetAllDealerships();
 
+        IEnumerable<string> GetAllDealershipsNames();
+
+        Dealership GetDealershipIdByName(string name);
+
         void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName);
     }
 }
