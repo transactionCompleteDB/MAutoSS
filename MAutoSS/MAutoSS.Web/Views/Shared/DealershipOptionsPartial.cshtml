@@ -1,10 +1,18 @@
 ﻿<div class="container-fluid dealerships-container">
     <div class="row">
         <div class="col-xs-6">
-            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='@Url.Action("CreateNewDealership")'">Load all dealerships info</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='@Url.Action("LoadDealershipInfo", "Dealerships")'">Load dealerships info</button>
         </div>
         <div class="col-xs-6">
-            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='@Url.Action("CreateNewDealership")'">Create new dealership</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='@Url.Action("CreateNewDealership", "Dealerships")'">Create new dealership</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='@Url.Action("CreateNewDealership", "Dealerships")'">Add new employee</button>
+        </div>
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='@Url.Action("CreateNewDealership", "Dealerships")'">Add new car</button>
         </div>
     </div>
 </div>
