@@ -4,6 +4,7 @@ using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
 using System.Linq;
+using Bytes2you.Validation;
 
 namespace MAutoSS.Services
 {
@@ -21,6 +22,11 @@ namespace MAutoSS.Services
             IGenericRepository<City> citiesRepo,
             IGenericRepository<Country> countriesRepo)
         {
+            Guard.WhenArgument(dealershipRepo, "dealershipRepo").IsNull().Throw();
+            Guard.WhenArgument(addressRepo, "addressRepo").IsNull().Throw();
+            Guard.WhenArgument(citiesRepo, "citiesRepo").IsNull().Throw();
+            Guard.WhenArgument(countriesRepo, "countriesRepo").IsNull().Throw();
+            
             this.dealershipRepo = dealershipRepo;
             this.addressRepo = addressRepo;
             this.citiesRepo = citiesRepo;
