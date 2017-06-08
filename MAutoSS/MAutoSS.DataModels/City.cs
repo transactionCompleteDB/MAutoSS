@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MAutoSS.DataModels
 {
@@ -16,6 +17,7 @@ namespace MAutoSS.DataModels
         public int Id { get; set; }
 
         [Required]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         public virtual ICollection<Address> Addresses

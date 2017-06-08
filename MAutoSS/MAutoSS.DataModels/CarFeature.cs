@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MAutoSS.DataModels
 {
@@ -16,8 +17,14 @@ namespace MAutoSS.DataModels
 
         [Required]
         [MinLength(1)]
-        [MaxLength(100)]
+        [MaxLength(20)]
+        [Index(IsUnique = true)]
+        public string Name { get; set; }
+
+        [MinLength(10)]
+        [MaxLength(300)]
         public string Description { get; set; }
+
 
         public virtual ICollection<Car> Cars
         {
