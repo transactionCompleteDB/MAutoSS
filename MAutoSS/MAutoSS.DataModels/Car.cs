@@ -18,18 +18,6 @@ namespace MAutoSS.DataModels
 
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(1)]
-        [MaxLength(15)]
-        [Index(IsUnique = true)]
-        public string Brand { get; set; }
-
-        [Required]
-        [MinLength(1)]
-        [MaxLength(15)]
-        [Index(IsUnique = true)]
-        public string Model { get; set; }
-
         public DateTime ManufactureDate { get; set; }
 
         public int Mileage{ get; set; }
