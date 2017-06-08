@@ -56,5 +56,13 @@ namespace MAutoSS.DataModels
             get { return this.carFeatures; }
             set { this.carFeatures = value; }
         }
+
+        public int CarBrandId { get; set; }
+
+        public virtual CarBrand CarBrand { get; set; }
+
+        public int CarModelId { get; set; }
+
+        public virtual CarModel CarModel { get; set; }
     }
 }

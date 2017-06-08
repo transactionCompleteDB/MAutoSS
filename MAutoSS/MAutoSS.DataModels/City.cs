@@ -17,7 +17,6 @@ namespace MAutoSS.DataModels
         public int Id { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         public virtual ICollection<Address> Addresses

@@ -29,7 +29,10 @@ namespace MAutoSS.Data
 
         public virtual IDbSet<CarFeature> CarFeatures { get; set; }
 
+        public virtual IDbSet<CarBrand> CarBrands { get; set; }
 
+        public virtual IDbSet<CarModel> CarModels { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
