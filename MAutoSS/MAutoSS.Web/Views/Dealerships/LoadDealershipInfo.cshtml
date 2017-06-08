@@ -2,11 +2,13 @@
 
 @Html.Partial("DealershipOptionsPartial")
 
-<div class="container-fluid dealerships-container">
-    <div class="row">
-        <h3>Dealerships info</h3>
-    </div>
-    @(Html.Kendo().Grid(Model)
+@if (Model.Count() > 0)
+{
+    <div class="container-fluid dealerships-container">
+        <div class="row">
+            <h3>Dealerships info</h3>
+        </div>
+        @(Html.Kendo().Grid(Model)
     .Name("Grid")
     .Columns(columns =>
     {
@@ -31,5 +33,11 @@
         .PageSize(20)
         .ServerOperation(false)
      )
-    )
-</div>
+        )
+    </div>
+}
+else
+{
+    <h2>There are no records for dealerships.</h2>
+}
+
