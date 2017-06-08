@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MAutoSS.Web.Models.Employee.EmployeeMainInfoModel>
+
+@Html.Partial("DealershipOptionsPartial")
+
+<div class="container-fluid dealerships-container">
+    <div class="row">
+        <h3>Employees info</h3>
+    </div>
+    @(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(e => e.FirstName).Title("First name").Width(190);
+        columns.Bound(e => e.LastName).Title("Last name").Width(190);
+        columns.Bound(e => e.Dealership).Title("Dealership").Width(190);
+        columns.Bound(e => e.NumberOfSales).Title("Number of sales").Width(190);
+
+    })
+    .HtmlAttributes(new { style = "height: 550px;" })
+    .Pageable(pageable => pageable
+       .Input(true)
+       .Numeric(false)
+     )
+    .Sortable()
+    .Scrollable(scr => scr.Height(430))
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .ServerOperation(false)
+     )
+    )
+</div>
