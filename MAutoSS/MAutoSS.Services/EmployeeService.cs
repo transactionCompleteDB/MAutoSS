@@ -3,7 +3,7 @@
 using MAutoSS.DataModels;
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.Services.Contracts;
-using System;
+using Bytes2you.Validation;
 
 namespace MAutoSS.Services
 {
@@ -18,6 +18,10 @@ namespace MAutoSS.Services
             IGenericRepository<Dealership> dealershipRepo,
             IDealershipService dealershipService)
         {
+            Guard.WhenArgument(employeeRepo, "employeeRepo").IsNull().Throw();
+            Guard.WhenArgument(dealershipRepo, "dealershipRepo").IsNull().Throw();
+            Guard.WhenArgument(dealershipService, "dealershipService").IsNull().Throw();
+            
             this.employeeRepo = employeeRepo;
             this.dealershipRepo = dealershipRepo;
             this.dealershipService = dealershipService;
@@ -40,10 +44,7 @@ namespace MAutoSS.Services
             };
             
             this.employeeRepo.Add(newEmployee);
-            this.employeeRepo.SaveChanges();
-
-
-        
+            this.employeeRepo.SaveChanges();        
         }
     }
 }
