@@ -181,6 +181,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address\AddressViewModel.cs" />
+    <Compile Include="Models\Car\CarFeatureViewModel.cs" />
     <Compile Include="Models\Car\CarInputModel.cs" />
     <Compile Include="Models\City\CityViewModel.cs" />
     <Compile Include="Models\Country\CountryViewModel.cs" />
