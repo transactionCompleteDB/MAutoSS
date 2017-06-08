@@ -10,7 +10,9 @@ namespace MAutoSS.Services.Contracts
 
         IEnumerable<string> GetAllDealershipsNames();
 
-        Dealership GetDealershipIdByName(string name);
+        Dealership GetAllDealershipById(int id);
+
+        Dealership GetDealershipByName(string name);
 
         void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName);
     }
