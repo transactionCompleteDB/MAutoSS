@@ -23,13 +23,13 @@ namespace MAutoSS.DataModels
         public int Mileage{ get; set; }
 
         [Required]
-        public virtual FuelType FuelType { get; set; }
+        public FuelType FuelType { get; set; }
 
         [Required]
-        public virtual VehicleType VehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
 
         [Required]
-        public virtual TransimssionType TransimssionType { get; set; }
+        public TransimssionType TransimssionType { get; set; }
 
         public int DealershipId { get; set; }
 
