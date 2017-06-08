@@ -52,7 +52,7 @@ namespace MAutoSS.Web.Controllers
         public ActionResult LoadDealershipInfo()
         {
             var allDealerships = this.dealershipService.GetAllDealerships()
-                 .Select(x => new DealershipMainInfoViewModel
+                 .Select(x => new DealershipMainInfoModel
                  {
                      Name = x.Name,
                      Address = new AddressViewModel

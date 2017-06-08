@@ -37,7 +37,12 @@ namespace MAutoSS.Services
             return this.dealershipRepo.GetAll().Select(x => x.Name);
         }
 
-        public Dealership GetDealershipIdByName(string name)
+        public Dealership GetAllDealershipById(int id)
+        {
+            return this.dealershipRepo.GetAll().FirstOrDefault(x => x.Id == id);
+        }
+
+        public Dealership GetDealershipByName(string name)
         {
             return this.dealershipRepo.GetAll().FirstOrDefault(x => x.Name == name);
         }

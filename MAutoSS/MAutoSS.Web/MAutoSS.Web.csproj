@@ -183,8 +183,9 @@
     <Compile Include="Models\City\CityViewModel.cs" />
     <Compile Include="Models\Country\CountryViewModel.cs" />
     <Compile Include="Models\Dealership\DealershipInputModel.cs" />
-    <Compile Include="Models\Dealership\DealershipMainInfoViewModel.cs" />
+    <Compile Include="Models\Dealership\DealershipMainInfoModel.cs" />
     <Compile Include="Models\Employee\EmployeeInputModel.cs" />
+    <Compile Include="Models\Employee\EmployeeMainInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +248,7 @@
     <Content Include="Views\Dealerships\CreateNewDealership.cshtml" />
     <Content Include="Views\Dealerships\LoadDealershipInfo.cshtml" />
     <Content Include="Views\Employee\CreateNewEmployee.cshtml" />
+    <Content Include="Views\Employee\LoadEmployeesInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

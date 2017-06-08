@@ -2,6 +2,7 @@
 
 using MAutoSS.Data.Contracts;
 using MAutoSS.DataModels;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace MAutoSS.Data
 {
@@ -31,6 +32,8 @@ namespace MAutoSS.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
             modelBuilder.Entity<Address>()
                 .HasKey(x => x.Id);
 
