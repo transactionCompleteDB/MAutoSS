@@ -5,14 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MAutoSS.DataModels
 {
     public class CarModel
-    {
-        private ICollection<Car> cars;
-
-        public CarModel()
-        {
-            this.cars = new HashSet<Car>();
-        }
-
+    {        
         public int Id { get; set; }
 
         [Required]
@@ -21,6 +14,8 @@ namespace MAutoSS.DataModels
         [Index(IsUnique = true)]
         public string Model { get; set; }
 
-        public virtual ICollection<Car> Cars { get; set; }
+        public int CarBrandId { get; set; }
+
+        public virtual CarBrand CarBrand { get; set; }        
     }
 }
