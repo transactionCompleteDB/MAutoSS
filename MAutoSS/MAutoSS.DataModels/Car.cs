@@ -40,6 +40,10 @@ namespace MAutoSS.DataModels
         [Required]
         public virtual TransimssionType TransimssionType { get; set; }
 
+        public int DealershipId { get; set; }
+
+        public virtual Dealership Dealership { get; set; }
+
         public int SaleId { get; set; }
 
         public Sale Sale { get; set; }
