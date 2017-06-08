@@ -1,9 +1,10 @@
-﻿using MAutoSS.DataModels.Postgre.Models;
+﻿using MAutoSS.Data.Postgre.Contracts;
+using MAutoSS.DataModels.Postgre.Models;
 using System.Data.Entity;
 
 namespace MAutoSS.Data.Postgre
 {
-    public class MAutoSSDbContextPostgre : DbContext
+    public class MAutoSSDbContextPostgre : DbContext, IMAutoSSDbContextPostgre
     {
         public MAutoSSDbContextPostgre() : base("PostgreConnection")
         {
