@@ -30,7 +30,7 @@ namespace MAutoSS.Services
 
         public void CreateNewEmployee(string firstName, string lastName, string dealershipName)
         {
-            var dealershipToAssignEmployee = this.dealershipService.GetDealershipIdByName(dealershipName);
+            var dealershipToAssignEmployee = this.dealershipService.GetDealershipByName(dealershipName);
 
             var newEmployee = new Employee
             {
@@ -38,9 +38,12 @@ namespace MAutoSS.Services
                 LastName = lastName,
                 DealershipId = dealershipToAssignEmployee.Id
             };
-
+            
             this.employeeRepo.Add(newEmployee);
             this.employeeRepo.SaveChanges();
+
+
+        
         }
     }
 }

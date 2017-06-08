@@ -5,6 +5,8 @@ using Bytes2you.Validation;
 
 using MAutoSS.Services.Contracts;
 using MAutoSS.Web.Models.Employee;
+using System.Linq;
+using MAutoSS.Web.Models.Dealership;
 
 namespace MAutoSS.Web.Controllers
 {
@@ -52,8 +54,22 @@ namespace MAutoSS.Web.Controllers
                 model.LastName,
                 model.DealershipName);
 
-            return null;
+            return this.RedirectToAction("LoadEmployeesInfo");
+        }
 
+        [HttpGet]
+        public ActionResult LoadEmployeesInfo()
+        {
+            var allEmployees = this.employeeService.GetAllEmployees()
+                 .Select(x => new EmployeeMainInfoModel
+                 {
+                     FirstName = x.FirstName,
+                     LastName = x.LastName,
+                     Dealership = x.Dealership.Name,
+                     NumberOfSales = x.Sales.Count
+                 });
+
+            return View(allEmployees);
         }
     }
 }
