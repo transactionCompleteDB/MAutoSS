@@ -179,7 +179,41 @@ namespace MAutoSS.Web.Controllers
                 model.DealershipId,
                 selectedCarFeaturesIds);
 
-            return null;
+            return RedirectToAction("LoadCarsInfo");
+        }
+
+        [HttpGet]
+        public ActionResult LoadCarsInfo()
+        {
+            var allCars = this.carService.GetAllCars()
+                 .Select(x => new MainCarsInfo
+                 {
+                     CarId = x.Id,
+                     Brand = x.CarBrand.Brand,
+                     Model = x.CarModel.Model,
+                     ManifactureYear = x.ManufactureYear.ToString(),
+                     Mileage = x.Mileage.ToString(),
+                     Dealership = x.Dealership.Name
+                 });
+
+            return View(allCars);
+        }
+
+        [HttpGet]
+        public ActionResult LoadSelectedCarInfo(int carId)
+        {
+            var allCars = this.carService.GetAllCars()
+                 .Select(x => new MainCarsInfo
+                 {
+                     CarId = x.Id,
+                     Brand = x.CarBrand.Brand,
+                     Model = x.CarModel.Model,
+                     ManifactureYear = x.ManufactureYear.ToString(),
+                     Mileage = x.Mileage.ToString(),
+                     Dealership = x.Dealership.Name
+                 });
+
+            return View(allCars);
         }
     }
 }
