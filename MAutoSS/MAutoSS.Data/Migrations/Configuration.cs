@@ -1,3 +1,4 @@
+using MAutoSS.Data.JsonImporter;
 using MAutoSS.DataModels;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -28,6 +29,26 @@ namespace MAutoSS.Data.Migrations
             {
                 AddVehicleTypes(context);
             }
+
+            if(context.CarBrands.Count()==0)
+            {
+                Importer.ImportBrands(context);
+            }
+
+            if (context.CarModels.Count() == 0)
+            {
+                Importer.ImportModels(context);
+            }
+
+            if (context.CarFeatures.Count() == 0)
+            {
+                Importer.ImportCarFeature(context);
+            }
+
+            if (context.Dealerships.Count() == 0)
+            {
+                Importer.ImportDealerships(context);
+            }            
         }
 
         private void AddTransimssionTypes(MAutoSSDbContext context)

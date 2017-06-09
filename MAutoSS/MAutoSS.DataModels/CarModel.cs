@@ -9,9 +9,9 @@ namespace MAutoSS.DataModels
         public int Id { get; set; }
 
         [Required]
-        [MinLength(2)]
-        [MaxLength(30)]
-        [Index(IsUnique = true)]
+        [MinLength(1)]
+        [MaxLength(50)]
+       
         public string Model { get; set; }
 
         public int CarBrandId { get; set; }
