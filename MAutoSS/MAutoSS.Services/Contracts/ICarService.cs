@@ -7,6 +7,15 @@ namespace MAutoSS.Services.Contracts
     {
         IEnumerable<Car> GetAllCars();
 
-        void CreateNewCar(string firstName, string lastName, string dealershipName);
+        void CreateNewCar(
+            int brandId,
+            int modelId,
+            int vehicleId,
+            int manifactureYear,
+            int mileage,
+            int fuelId,
+            int transmissionId,
+            int dealershipId,
+            IEnumerable<int> selectedCarFeaturesIds);
     }
 }
