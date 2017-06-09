@@ -1,20 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace MAutoSS.Web.Models.Car
 {
     public class CarInputModel
     {
-        public string Brand { get; set; }
+        [DisplayName("Brand")]
+        public int BrandId { get; set; }
 
-        public string Model { get; set; }
+        [DisplayName("Model")]
+        public int ModelId { get; set; }
 
-        public DateTime ManufactureDate { get; set; }
+        [DisplayName("Vehicle Type")]
+        public int VehicleTypeId { get; set; }
 
+        [DisplayName("Fuel")]
+        public int FuelTypeId { get; set; }
+
+        [DisplayName("Transmission")]
+        public int TransmissionTypeId { get; set; }
+
+        [DisplayName("Manufacture Year")]
+        public int ManufactureYear { get; set; }
+
+        [DisplayName("Mileage")]
         public int Mileage { get; set; }
 
-        public string Dealership { get; set; }
+        [DisplayName("Selling Dealership")]
+        public int DealershipId { get; set; }
 
-        public ICollection<CarFeatureViewModel> CarFeatures { get; set; }
+        public IList<CarFeatureViewModel> CarFeatures { get; set; }
     }
 }
