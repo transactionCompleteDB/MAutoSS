@@ -36,7 +36,5 @@ namespace MAutoSS.DataModels
             get { return this.cars; }
             set { this.cars = value; }
         }
-
-
     }
 }
