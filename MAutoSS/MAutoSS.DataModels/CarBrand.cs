@@ -24,9 +24,7 @@ namespace MAutoSS.DataModels
         [MaxLength(30)]
         [Index(IsUnique = true)]
         public string Brand { get; set; }
-
-        public string CarModel { get; set; }
-
+               
         public virtual ICollection<Car> Cars
         {
             get { return this.cars; }
