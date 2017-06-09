@@ -58,7 +58,11 @@ namespace MAutoSS.Data.Migrations
             if (context.Countries.Count() == 0)
             {
                 Importer.ImportCounties(context);
-            }           
+            }
+            if (context.Cities.Count() == 0)
+            {
+                Importer.ImportCities(context);
+            }
 
 
         }

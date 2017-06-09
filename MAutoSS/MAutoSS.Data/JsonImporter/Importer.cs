@@ -128,7 +128,7 @@ namespace MAutoSS.Data.JsonImporter
                 };
                 context.Employees.AddOrUpdate(newEmploy);
             }
-           
+
             context.SaveChanges();
         }
 
@@ -152,6 +152,41 @@ namespace MAutoSS.Data.JsonImporter
             context.SaveChanges();
         }
 
+        public static void ImportCities(MAutoSSDbContext context)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "cities.json");
+
+            JArray allCities = JArray.Parse(File.ReadAllText(path));
+            int DoSwitch(string some)
+            {
+                switch (some)
+                {
+                    case "Sofia": return context.Countries.First(x => x.Name == "Bulgaria").Id;
+                    case "Paris": return context.Countries.First(x => x.Name == "France").Id;
+                    case "Berlin": return context.Countries.First(x => x.Name == "Germany").Id;
+                    case "San Francisko": return context.Countries.First(x => x.Name == "USA").Id;
+                    case "Madrid": return context.Countries.First(x => x.Name == "Spain").Id;
+                    case "Pernik": return context.Countries.First(x => x.Name == "Bulgaria").Id;
+                    default: return 0;
+                }
+            }
+               
+            foreach (var city in allCities)
+            {
+                var name = city.ToString();
+                var newCity = new City
+                {
+                    Name = name,
+                    CountryId = DoSwitch(name)
+
+
+                };
+                context.Cities.AddOrUpdate(newCity);
+
+            }
+            context.SaveChanges();
+        }
+        
     }
 }
 
