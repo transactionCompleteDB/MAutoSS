@@ -104,5 +104,54 @@ namespace MAutoSS.Data.JsonImporter
             }
             context.SaveChanges();
         }
+
+        public static void ImportEmployees(MAutoSSDbContext context)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "employees.json");
+
+            JArray allEmployyes = JArray.Parse(File.ReadAllText(path));
+
+            foreach (var empl in allEmployyes)
+            {
+                var firstName = empl["FirstName"].ToString();
+                var LastName = empl["LastName"].ToString();
+                var allDealerId = context.Dealerships.Select(x => x.Id).ToArray();
+                Random dealer = new Random();
+                int randomIndex = dealer.Next(0, allDealerId.Length);
+                int randomNumber = allDealerId[randomIndex];
+
+                var newEmploy = new Employee
+                {
+                    FirstName = firstName,
+                    LastName = LastName,
+                    DealershipId = randomNumber
+                };
+                context.Employees.AddOrUpdate(newEmploy);
+            }
+           
+            context.SaveChanges();
+        }
+
+        public static void ImportCounties(MAutoSSDbContext context)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "countries.json");
+
+            JArray allCountries = JArray.Parse(File.ReadAllText(path));
+
+
+            foreach (var country in allCountries)
+            {
+                var name = country.ToString();
+                var newCountry = new Country
+                {
+                    Name = name
+                };
+                context.Countries.AddOrUpdate(newCountry);
+
+            }
+            context.SaveChanges();
+        }
+
     }
 }
+

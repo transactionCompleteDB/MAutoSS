@@ -24,7 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonFiles", "JsonFiles", "{
 		JsonFiles\car-brands.json = JsonFiles\car-brands.json
 		JsonFiles\car-feature.json = JsonFiles\car-feature.json
 		JsonFiles\car-models.json = JsonFiles\car-models.json
+		JsonFiles\countries.json = JsonFiles\countries.json
 		JsonFiles\dealership.json = JsonFiles\dealership.json
+		JsonFiles\employees.json = JsonFiles\employees.json
 	EndProjectSection
 EndProject
 Global
