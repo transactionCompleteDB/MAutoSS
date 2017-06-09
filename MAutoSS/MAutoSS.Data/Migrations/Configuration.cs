@@ -1,4 +1,6 @@
+using MAutoSS.DataModels;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace MAutoSS.Data.Migrations
 {
@@ -12,18 +14,44 @@ namespace MAutoSS.Data.Migrations
 
         protected override void Seed(MAutoSSDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            if (context.TransimssionTypes.Count() == 0)
+            {
+                AddTransimssionTypes(context);
+            }
+
+            if (context.FuelTypes.Count() == 0)
+            {
+                AddFuelTypes(context);
+            }
+
+            if (context.VehicleTypes.Count() == 0)
+            {
+                AddVehicleTypes(context);
+            }
         }
 
+        private void AddTransimssionTypes(MAutoSSDbContext context)
+        {
+            context.TransimssionTypes.Add(new TransimssionType () { Type = "Manual" });
+            context.TransimssionTypes.Add(new TransimssionType() { Type = "Automatic" });
+            context.TransimssionTypes.Add(new TransimssionType() { Type = "Semi-Automatic" });
+        }
+
+        private void AddFuelTypes(MAutoSSDbContext context)
+        {
+            context.FuelTypes.Add(new FuelType() { Type = "Diesel" });
+            context.FuelTypes.Add(new FuelType() { Type = "Petrol" });
+            context.FuelTypes.Add(new FuelType() { Type = "Hybrid" });
+        }
+
+        private void AddVehicleTypes(MAutoSSDbContext context)
+        {
+            context.VehicleTypes.Add(new VehicleType() { Type = "Saloon" });
+            context.VehicleTypes.Add(new VehicleType() { Type = "Touring" });
+            context.VehicleTypes.Add(new VehicleType() { Type = "Cabriolet" });
+            context.VehicleTypes.Add(new VehicleType() { Type = "Coupe" });
+            context.VehicleTypes.Add(new VehicleType() { Type = "Van" });
+            context.VehicleTypes.Add(new VehicleType() { Type = "Suv" });
+        }
     }
 }
