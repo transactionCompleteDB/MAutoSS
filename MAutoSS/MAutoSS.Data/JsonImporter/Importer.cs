@@ -157,6 +157,7 @@ namespace MAutoSS.Data.JsonImporter
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "cities.json");
 
             JArray allCities = JArray.Parse(File.ReadAllText(path));
+
             int DoSwitch(string some)
             {
                 switch (some)
@@ -170,7 +171,7 @@ namespace MAutoSS.Data.JsonImporter
                     default: return 0;
                 }
             }
-               
+
             foreach (var city in allCities)
             {
                 var name = city.ToString();
@@ -178,15 +179,61 @@ namespace MAutoSS.Data.JsonImporter
                 {
                     Name = name,
                     CountryId = DoSwitch(name)
-
-
                 };
-                context.Cities.AddOrUpdate(newCity);
 
+                context.Cities.AddOrUpdate(newCity);
             }
             context.SaveChanges();
         }
-        
+        public static void ImportAdresses(MAutoSSDbContext context)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "adresses.json");
+
+            JArray allAdres = JArray.Parse(File.ReadAllText(path));
+
+            int DoSwitch(string some)
+            {
+                switch (some)
+                {
+                    case "Okolovrasten put 13": return context.Cities.First(x => x.Name == "Sofia").Id;
+                    case "rue Montmorency 98": return context.Cities.First(x => x.Name == "Paris").Id;
+                    case "Brichki strasse 15": return context.Cities.First(x => x.Name == "Berlin").Id;
+                    case "Yagni street 48": return context.Cities.First(x => x.Name == "San Francisko").Id;
+                    case "Hala Real Madrid 458": return context.Cities.First(x => x.Name == "Madrid").Id;
+                    case "Golf street 45": return context.Cities.First(x => x.Name == "Pernik").Id;
+                    default: return 0;
+                }
+            }
+            int DoSwitchDealer(string some)
+            {
+                switch (some)
+                {
+                    case "Okolovrasten put 13": return context.Dealerships.First(x => x.Name == "Avtomontiora").Id;
+                    case "rue Montmorency 98": return context.Dealerships.First(x => x.Name == "Mia's Cars").Id;
+                    case "Brichki strasse 15": return context.Dealerships.First(x => x.Name == "Johny").Id;
+                    case "Yagni street 48": return context.Dealerships.First(x => x.Name == "Luxury Cars").Id;
+                    case "Hala Real Madrid 458": return context.Dealerships.First(x => x.Name == "BestCars").Id;
+                    case "Golf street 45": return context.Dealerships.First(x => x.Name == "Cars Pernik").Id;
+                    default: return 0;
+                }
+            }
+
+            foreach (var adr in allAdres)
+            {
+                var name = adr.ToString();
+                var newAdres = new Address
+                {
+                    AddressText = name,
+                    CityId = DoSwitch(name),
+                    Id = DoSwitchDealer(name)
+
+                };
+
+                context.Addresses.AddOrUpdate(newAdres);
+            }
+            context.SaveChanges();
+        }
+
     }
 }
 

@@ -21,6 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAutoSS.Data.SQLite", "MAut
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonFiles", "JsonFiles", "{3DB2FBD5-B03D-4D42-8478-9CF752C0444C}"
 	ProjectSection(SolutionItems) = preProject
+		JsonFiles\adresses.json = JsonFiles\adresses.json
 		JsonFiles\car-brands.json = JsonFiles\car-brands.json
 		JsonFiles\car-feature.json = JsonFiles\car-feature.json
 		JsonFiles\car-models.json = JsonFiles\car-models.json
