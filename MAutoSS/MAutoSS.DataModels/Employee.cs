@@ -27,7 +27,6 @@ namespace MAutoSS.DataModels
         [Required]
         public int DealershipId { get; set; }
 
-        [Required]
         public virtual Dealership Dealership { get; set; }
 
         public virtual ICollection<Sale> Sales

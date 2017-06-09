@@ -48,7 +48,13 @@ namespace MAutoSS.Data.Migrations
             if (context.Dealerships.Count() == 0)
             {
                 Importer.ImportDealerships(context);
-            }            
+            }
+
+            if (context.Employees.Count() == 0)
+            {
+                Importer.ImportEmployees(context);
+            }
+            
         }
 
         private void AddTransimssionTypes(MAutoSSDbContext context)
