@@ -1,5 +1,4 @@
-﻿using MAutoSS.DataModels.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace MAutoSS.Web.Models.Car
@@ -13,12 +12,6 @@ namespace MAutoSS.Web.Models.Car
         public DateTime ManufactureDate { get; set; }
 
         public int Mileage { get; set; }
-
-        public FuelType FuelType { get; set; }
-
-        public VehicleType VehicleType { get; set; }
-
-        public TransimssionType TransimssionType { get; set; }
 
         public string Dealership { get; set; }
 
