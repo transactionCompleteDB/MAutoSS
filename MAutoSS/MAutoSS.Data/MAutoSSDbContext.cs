@@ -32,7 +32,13 @@ namespace MAutoSS.Data
         public virtual IDbSet<CarBrand> CarBrands { get; set; }
 
         public virtual IDbSet<CarModel> CarModels { get; set; }
-        
+
+        public virtual IDbSet<FuelType> FuelTypes { get; set; }
+
+        public virtual IDbSet<TransimssionType> TransimssionTypes { get; set; }
+
+        public virtual IDbSet<VehicleType> VehicleTypes { get; set; }
+       
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
