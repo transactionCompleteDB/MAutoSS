@@ -10,7 +10,6 @@ namespace MAutoSS.DataModels
         [Required]
         [MinLength(10)]
         [MaxLength(70)]
-        [Index(IsUnique = true)]
         public string AddressText { get; set; }
 
         public virtual Dealership Dealership { get; set; }

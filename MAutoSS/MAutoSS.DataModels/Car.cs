@@ -18,30 +18,18 @@ namespace MAutoSS.DataModels
 
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(1)]
-        [MaxLength(15)]
-        [Index(IsUnique = true)]
-        public string Brand { get; set; }
-
-        [Required]
-        [MinLength(1)]
-        [MaxLength(15)]
-        [Index(IsUnique = true)]
-        public string Model { get; set; }
-
         public DateTime ManufactureDate { get; set; }
 
         public int Mileage{ get; set; }
 
         [Required]
-        public virtual FuelType FuelType { get; set; }
+        public FuelType FuelType { get; set; }
 
         [Required]
-        public virtual VehicleType VehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
 
         [Required]
-        public virtual TransimssionType TransimssionType { get; set; }
+        public TransimssionType TransimssionType { get; set; }
 
         public int DealershipId { get; set; }
 
@@ -56,5 +44,10 @@ namespace MAutoSS.DataModels
             get { return this.carFeatures; }
             set { this.carFeatures = value; }
         }
+
+        public int CarBrandId { get; set; }
+
+        public virtual CarBrand CarBrand { get; set; }
+
     }
 }

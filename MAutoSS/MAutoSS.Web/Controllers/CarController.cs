@@ -15,5 +15,15 @@ namespace MAutoSS.Web.Controllers
 
             this.carService = carService;
         }
+
+        [HttpGet]
+        public ActionResult CreateNewCar()
+        {
+            
+
+            return View();
+        }
     }
 }
+
+
