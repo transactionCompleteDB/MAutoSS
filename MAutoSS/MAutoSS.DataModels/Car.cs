@@ -14,7 +14,7 @@ namespace MAutoSS.DataModels
 
         public int Id { get; set; }
 
-        public DateTime ManufactureDate { get; set; }
+        public int ManufactureYear { get; set; }
 
         public int Mileage{ get; set; }
 
