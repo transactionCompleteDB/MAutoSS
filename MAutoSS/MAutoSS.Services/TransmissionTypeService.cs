@@ -3,6 +3,7 @@ using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MAutoSS.Services
 {

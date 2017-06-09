@@ -43,7 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarBrandsService.cs" />
+    <Compile Include="CarFeaturesService.cs" />
+    <Compile Include="CarModelsService.cs" />
     <Compile Include="CarService.cs" />
+    <Compile Include="Contracts\ICarBrandsService.cs" />
+    <Compile Include="Contracts\ICarFeaturesService.cs" />
+    <Compile Include="Contracts\ICarModelsService.cs" />
     <Compile Include="Contracts\IDealershipService.cs" />
     <Compile Include="Contracts\IEmployeeService.cs" />
     <Compile Include="Contracts\IFuelTypeService.cs" />

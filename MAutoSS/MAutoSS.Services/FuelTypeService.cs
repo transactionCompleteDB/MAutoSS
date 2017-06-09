@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MAutoSS.DataModels;
 using MAutoSS.Data.Repositories.Contracts;
 using Bytes2you.Validation;
+using System.Linq;
 
 namespace MAutoSS.Services
 {

@@ -75,7 +75,10 @@ namespace MAutoSS.Web.App_Start
 
             kernel.Bind<IDealershipService>().To<DealershipService>().InRequestScope();
             kernel.Bind<IEmployeeService>().To<EmployeeService>().InRequestScope();
+            kernel.Bind<ICarBrandsService>().To<CarBrandsService>().InRequestScope();
+            kernel.Bind<ICarModelsService>().To<CarModelsService>().InRequestScope();
             kernel.Bind<ICarService>().To<CarService>().InRequestScope();
+            kernel.Bind<ICarFeaturesService>().To<CarFeaturesService>().InRequestScope();
             kernel.Bind<ITransmissionTypesService>().To<TransmissionTypeService>().InRequestScope();
             kernel.Bind<IVehicleTypeService>().To<VehicleTypeService>().InRequestScope();
             kernel.Bind<IFuelTypeService>().To<FuelTypeService>().InRequestScope(); 

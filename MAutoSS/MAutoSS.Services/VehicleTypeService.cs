@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
 using MAutoSS.Data.Repositories.Contracts;
@@ -10,7 +9,6 @@ namespace MAutoSS.Services
     public class VehicleTypeService : IVehicleTypeService
     {
         private IGenericRepository<VehicleType> vehicleTypeRepo;
-        private object transmissionRepo;
 
         public VehicleTypeService(
            IGenericRepository<VehicleType> vehicleTypeRepo)
