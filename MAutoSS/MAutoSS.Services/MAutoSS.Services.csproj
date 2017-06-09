@@ -46,10 +46,16 @@
     <Compile Include="CarService.cs" />
     <Compile Include="Contracts\IDealershipService.cs" />
     <Compile Include="Contracts\IEmployeeService.cs" />
+    <Compile Include="Contracts\IFuelTypeService.cs" />
+    <Compile Include="Contracts\IVehicleTypeService.cs" />
     <Compile Include="DealershipService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="Contracts\ICarService.cs" />
+    <Compile Include="Contracts\ITransmissionTypesService.cs" />
+    <Compile Include="FuelTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransmissionTypeService.cs" />
+    <Compile Include="VehicleTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MAutoSS.DataModels\MAutoSS.DataModels.csproj">
