@@ -63,6 +63,8 @@
     <Compile Include="Postgre.Models\Discount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sale.cs" />
+    <Compile Include="SQLite.Models\Car.cs" />
+    <Compile Include="SQLite.Models\ServiceInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
