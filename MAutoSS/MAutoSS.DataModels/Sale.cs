@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace MAutoSS.DataModels
 {
@@ -16,9 +15,12 @@ namespace MAutoSS.DataModels
 
         public int EmployeeId { get; set; }
 
+        public virtual Employee Employee { get; set; }
 
-        public Employee Employee { get; set; }
-
-        public ICollection<Car> Cars { get; set; }
+        public ICollection<Car> Cars
+        {
+            get { return this.cars; }
+            set { this.cars = value; }
+        }
     }
 }
