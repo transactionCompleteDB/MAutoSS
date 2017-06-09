@@ -132,6 +132,26 @@ namespace MAutoSS.Data.JsonImporter
             context.SaveChanges();
         }
 
+        public static void ImportCounties(MAutoSSDbContext context)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "countries.json");
+
+            JArray allCountries = JArray.Parse(File.ReadAllText(path));
+
+
+            foreach (var country in allCountries)
+            {
+                var name = country.ToString();
+                var newCountry = new Country
+                {
+                    Name = name
+                };
+                context.Countries.AddOrUpdate(newCountry);
+
+            }
+            context.SaveChanges();
+        }
+
     }
 }
 

@@ -54,7 +54,13 @@ namespace MAutoSS.Data.Migrations
             {
                 Importer.ImportEmployees(context);
             }
-            
+
+            if (context.Countries.Count() == 0)
+            {
+                Importer.ImportCounties(context);
+            }           
+
+
         }
 
         private void AddTransimssionTypes(MAutoSSDbContext context)
