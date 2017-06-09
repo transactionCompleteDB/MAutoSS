@@ -4,23 +4,20 @@ using MAutoSS.Web.Models.Address;
 using MAutoSS.Web.Models.Dealership;
 using Moq;
 using NUnit.Framework;
+using System;
 using Telerik.JustMock;
 
 namespace MAutoSS.Tests.ControllerTests
 {
-
     [TestFixture]
     public class DealershipControllerTests
     {
         [Test]
-        public void CreateNewDealership_ShouldDoNothing_WhenThePassedParamIsNull()
+        public void CreateNewDealership_ShouldNotCall_serviceCreateNewDealership_WhenNoPassedParam()
         {
             //arrange
             var dealershipService = new Mock<IDealershipService>();
-            var dealershipInputModel = new Mock<DealershipInputModel>();
-
             var dealershipsController = new DealershipsController(dealershipService.Object);
-
 
             //act
             dealershipsController.CreateNewDealership();
@@ -29,8 +26,34 @@ namespace MAutoSS.Tests.ControllerTests
             dealershipService.Verify(x => x.CreateNewDealership(null, null, null, null), Times.Never);
         }
 
+        [Test]
+        public void CreateNewDealership_ShouldThrow_WhenNoPassedParamIsNull()
+        {
+            //arrange
+            var dealershipService = new Mock<IDealershipService>();
+            var dealershipsController = new DealershipsController(dealershipService.Object);
 
-        //This TEST requires unconstrained version of a Mocking tool:
+            //act & assert
+            Assert.Throws<ArgumentNullException>(delegate { dealershipsController.CreateNewDealership(null); });
+        }
+
+
+        //These TESTs requires unconstrained version of a Mocking tool:
+
+        //[Test]
+        //public void CreateNewDealership_ShouldNotThrow_WhenNoPassedParamIsNotNull()
+        //{
+        //    //arrange
+        //    var dealershipService = new Mock<IDealershipService>();
+        //    var dealershipInputModel = new Mock<DealershipInputModel>();
+
+        //    var dealershipsController = new DealershipsController(dealershipService.Object);
+
+        //    //act
+
+        //    //assert
+        //    Assert.DoesNotThrow(delegate { dealershipsController.CreateNewDealership(dealershipInputModel.Object); });
+        //}
 
         //[Test]
         //public void CreateNewDealership_ShouldCall_WhenThePassedParamIsValid()
