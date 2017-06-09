@@ -183,6 +183,7 @@
     <Compile Include="Models\Address\AddressViewModel.cs" />
     <Compile Include="Models\Car\CarFeatureViewModel.cs" />
     <Compile Include="Models\Car\CarInputModel.cs" />
+    <Compile Include="Models\Car\MainCarsInfo.cs" />
     <Compile Include="Models\City\CityViewModel.cs" />
     <Compile Include="Models\Country\CountryViewModel.cs" />
     <Compile Include="Models\Dealership\DealershipInputModel.cs" />
@@ -253,6 +254,7 @@
     <Content Include="Views\Employee\CreateNewEmployee.cshtml" />
     <Content Include="Views\Employee\LoadEmployeesInfo.cshtml" />
     <Content Include="Views\Car\CreateNewCar.cshtml" />
+    <Content Include="Views\Car\LoadCarsInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

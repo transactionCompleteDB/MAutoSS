@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MAutoSS.Web.Models.Car.MainCarsInfo>
+
+@Html.Partial("DealershipOptionsPartial")
+
+@if (Model.Count() > 0)
+{
+    <div class="container-fluid dealerships-container">
+        <div class="row">
+            <h3>All cars info</h3>
+        </div>
+
+        @(Html.Kendo().Grid(Model)
+        .Name("Grid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.Brand).Title("Brand").Width(190);
+            columns.Bound(c => c.Model).Title("Model").Width(190);
+            columns.Bound(c => c.ManifactureYear).Title("Manifacture year").Width(190);
+            columns.Bound(c => c.Mileage).Title("Mileage").Width(190);
+            columns.Bound(c => c.Dealership).Title("Dealership").Width(190);
+            columns.Template(c => @Html.ActionLink("More details", "LoadSelectedCarInfo", new { carId = c.CarId }, null));
+        })
+        .HtmlAttributes(new { style = "height: 550px;" })
+        .Pageable(pageable => pageable
+           .Input(false)
+           .Numeric(false))
+        .Sortable()
+        .Filterable()
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(5)
+            .Model(x => x.Id(c => c.CarId))
+            ))
+
+    </div>
+
+}
+else
+{
+    < h2 > There are no records for cars.</ h2 >
+}
