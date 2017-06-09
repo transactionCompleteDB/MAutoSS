@@ -1,3 +1,4 @@
+using MAutoSS.Data.JsonImporter;
 using MAutoSS.DataModels;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -27,6 +28,10 @@ namespace MAutoSS.Data.Migrations
             if (context.VehicleTypes.Count() == 0)
             {
                 AddVehicleTypes(context);
+            }
+            if(context.CarBrands.Count()==0)
+            {
+                Importer.ImportBrands(context);
             }
         }
 
