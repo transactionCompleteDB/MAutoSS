@@ -1,0 +1,84 @@
+﻿@model MAutoSS.Web.Models.Car.CarInputModel
+
+@{
+    ViewBag.Title = "Dealerships";
+}
+
+@Html.Partial("DealershipOptionsPartial")
+
+@using (Html.BeginForm("CreateNewCar", "Car", FormMethod.Post, new { @class = "form-group center-form" }))
+{
+
+    <form class="form-horizontal dealership-form">
+        <fieldset class="form-group row">
+            <legend>Add new car</legend>
+            <div class="form-group">
+                @Html.LabelFor(x => x.BrandId, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.BrandId, this.ViewBag.CarBrandsDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.ModelId, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.ModelId, this.ViewBag.CarModelsDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.TransmissionTypeId, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.TransmissionTypeId, this.ViewBag.TransmissionsDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.VehicleTypeId, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.VehicleTypeId, this.ViewBag.VehicleTypesDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.FuelTypeId, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.FuelTypeId, this.ViewBag.FuelTypesDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.ManufactureYear, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.ManufactureYear, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Mileage, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.Mileage, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.DealershipId, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.DealershipId, this.ViewBag.DealershipsDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @for (int i = 0; i < Model.CarFeatures.Count; i++)
+                {
+                    @Html.CheckBoxFor(m => m.CarFeatures[i].IsChecked)
+                    @Html.Label(Model.CarFeatures[i].Name)
+                    @Html.HiddenFor(m => m.CarFeatures[i].CarFeatureId)
+                }
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-outline-primary submit-new-dealership" value="Create" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+}
+
+@*//onchange="$('#model').load('?ajax=carmodel&fp=1&for_list=1&brandId='+parseInt(document.getElementById('BrandId').value));"*@
