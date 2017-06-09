@@ -84,5 +84,25 @@ namespace MAutoSS.Data.JsonImporter
             }
             context.SaveChanges();
         }
+
+        public static void ImportDealerships(MAutoSSDbContext context)
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "dealership.json");
+
+            JArray allDealers = JArray.Parse(File.ReadAllText(path));
+
+
+            foreach (var deal in allDealers)
+            {
+                var name = deal.ToString();
+                var newDealer = new Dealership
+                {
+                    Name = name
+                };
+                context.Dealerships.AddOrUpdate(newDealer);
+
+            }
+            context.SaveChanges();
+        }
     }
 }
