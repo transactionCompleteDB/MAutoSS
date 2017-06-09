@@ -145,7 +145,6 @@ namespace MAutoSS.Web.Controllers
             {
                 CarFeatureId = x.Id,
                 Name = x.Name,
-                Description = x.Description,
                 IsChecked = false
             })
             .ToList();
