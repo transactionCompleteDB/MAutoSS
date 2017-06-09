@@ -37,6 +37,10 @@ namespace MAutoSS.Data.Migrations
             {
                 Importer.ImportModels(context);
             }
+            if (context.CarFeatures.Count() == 0)
+            {
+                Importer.ImportCarFeature(context);
+            }
         }
 
         private void AddTransimssionTypes(MAutoSSDbContext context)

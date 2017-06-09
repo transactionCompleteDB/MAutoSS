@@ -63,5 +63,26 @@ namespace MAutoSS.Data.JsonImporter
             }
             context.SaveChanges();
         }
+
+        public static void ImportCarFeature(MAutoSSDbContext context)
+
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "car-feature.json");
+
+            JArray allfeatures = JArray.Parse(File.ReadAllText(path));
+
+
+            foreach (var feat in allfeatures)
+            {
+                var name = feat.ToString();
+                var newFeat = new CarFeature
+                {
+                    Name = name
+                };
+                context.CarFeatures.AddOrUpdate(newFeat);
+
+            }
+            context.SaveChanges();
+        }
     }
 }
