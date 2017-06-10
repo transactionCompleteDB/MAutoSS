@@ -1,0 +1,25 @@
+﻿@model MAutoSS.Web.Models.Car.FullCarInfo
+
+@Html.Partial("DealershipOptionsPartial")
+
+<div class="container-fluid carInfo">
+    <div class="container">
+        <h1 class="display-2">@Model.Brand @Model.Model</h1>
+        <div>
+            <p>Vehicle type: @Model.VehicleType</p>
+            <p>Manifacture year: @Model.ManufactureYear</p>
+            <p>Mileage: @Model.Mileage</p>
+            <p>Fuel: @Model.FuelType</p>
+            <p>Transmission: @Model.TransmissionType</p>
+            <p>Car features:</p>
+            <ul>
+            @foreach (var feature in @Model.CarFeatures)
+            {
+                <li>@feature</li>
+            }
+            </ul>
+        </div>
+        <button class="btn btn-primary" 
+                onclick="window.location.href='@Url.Action("DeleteCar", "Car", new { carId = Model.CarId })'">Delete</button>
+    </div>
+</div>
