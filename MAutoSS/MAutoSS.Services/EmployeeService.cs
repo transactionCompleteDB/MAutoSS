@@ -4,6 +4,8 @@ using MAutoSS.DataModels;
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.Services.Contracts;
 using Bytes2you.Validation;
+using System.Linq;
+using System;
 
 namespace MAutoSS.Services
 {
@@ -23,9 +25,14 @@ namespace MAutoSS.Services
             this.dealershipService = dealershipService;
         }
 
-        IEnumerable<Employee> IEmployeeService.GetAllEmployees()
+        public IEnumerable<Employee> GetAllEmployees()
         {
             return this.employeeRepo.GetAll();
+        }
+
+        public Employee GetEmployeeById(int id)
+        {
+            return this.employeeRepo.GetAll().FirstOrDefault(x => x.Id == id);
         }
 
         public void CreateNewEmployee(string firstName, string lastName, string dealershipName)
@@ -41,6 +48,20 @@ namespace MAutoSS.Services
             
             this.employeeRepo.Add(newEmployee);
             this.employeeRepo.SaveChanges();        
+        }
+
+        public void EditEmployee(int employeeId, string firstName, string lastName, string dealershipName)
+        {
+            var employeeForEdit = this.GetEmployeeById(employeeId);
+
+            var dealershipAttachTo = this.dealershipService.GetDealershipByName(dealershipName);
+
+            employeeForEdit.FirstName = firstName;
+            employeeForEdit.LastName = lastName;
+            employeeForEdit.Dealership= dealershipAttachTo;
+
+            this.employeeRepo.Update(employeeForEdit);
+            this.employeeRepo.SaveChanges();
         }
     }
 }
