@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MAutoSS.DataModels
 {
@@ -13,8 +14,10 @@ namespace MAutoSS.DataModels
 
         public int Id { get; set; }
 
+        [Range(1980, 2017)]
         public int ManufactureYear { get; set; }
 
+        [Range(0, 4000000)]
         public int Mileage{ get; set; }
 
         public int DealershipId { get; set; }
@@ -50,8 +53,5 @@ namespace MAutoSS.DataModels
         public int FuelTypeId { get; set; }
 
         public virtual FuelType FuelType { get; set; }
-
-
-
     }
 }

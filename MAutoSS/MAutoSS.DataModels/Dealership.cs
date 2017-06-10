@@ -18,8 +18,8 @@ namespace MAutoSS.DataModels
         public int Id { get; set; }
 
         [Required]
-        [MinLength(3)]
-        [MaxLength(30)]
+        [MinLength(1)]
+        [MaxLength(40)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
 

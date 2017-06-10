@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MAutoSS.DataModels
 {
@@ -8,8 +7,8 @@ namespace MAutoSS.DataModels
         public int Id { get; set; }
         
         [Required]
-        [MinLength(10)]
-        [MaxLength(70)]
+        [MinLength(5)]
+        [MaxLength(50)]
         public string AddressText { get; set; }
 
         public virtual Dealership Dealership { get; set; }

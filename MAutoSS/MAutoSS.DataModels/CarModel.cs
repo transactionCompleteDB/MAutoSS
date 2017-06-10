@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MAutoSS.DataModels
 {
@@ -10,8 +8,7 @@ namespace MAutoSS.DataModels
 
         [Required]
         [MinLength(1)]
-        [MaxLength(50)]
-       
+        [MaxLength(40)]
         public string Model { get; set; }
 
         public int CarBrandId { get; set; }

@@ -14,14 +14,14 @@ namespace MAutoSS.DataModels
 
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(20)]
+        [Required(ErrorMessage = "First name is required!")]
+        [MinLength(1)]
+        [MaxLength(40)]
         public string FirstName { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(20)]
+        [Required(ErrorMessage = "Last name is required!")]
+        [MinLength(1)]
+        [MaxLength(40)]
         public string LastName { get; set; }
 
         [Required]

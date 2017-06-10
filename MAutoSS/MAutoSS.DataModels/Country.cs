@@ -16,8 +16,7 @@ namespace MAutoSS.DataModels
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        [Index(IsUnique = true)]
+        [StringLength(40, MinimumLength = 1, ErrorMessage = "Country should be between 1 and 40 chars long")]
         public string Name { get; set; }
 
         public virtual ICollection<City> Cities
@@ -26,8 +25,5 @@ namespace MAutoSS.DataModels
 
             set { this.cities = value; }
         }
-
-        
-
     }
 }

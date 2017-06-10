@@ -16,7 +16,7 @@ namespace MAutoSS.DataModels
 
         [Required]
         [MinLength(1)]
-        [MaxLength(50)]
+        [MaxLength(40)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
