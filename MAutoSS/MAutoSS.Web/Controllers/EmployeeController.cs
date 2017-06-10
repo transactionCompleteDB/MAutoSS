@@ -66,7 +66,8 @@ namespace MAutoSS.Web.Controllers
                      LastName = x.LastName,
                      Dealership = x.Dealership.Name,
                      NumberOfSales = x.Sales.Count
-                 });
+                 })
+                 .OrderBy(p=>p.Dealership);
 
             return View(allEmployees);
         }
