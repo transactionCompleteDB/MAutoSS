@@ -26,7 +26,7 @@ namespace MAutoSS.Web.Models.Car
         public int ManufactureYear { get; set; }
 
         [DisplayName("Mileage")]
-        [Range(0, 4000000, ErrorMessage = "Миелеаге should be between 0 and 4000000")]
+        [Range(0, 4000000, ErrorMessage = "Mileage should be between 0 and 4000000")]
         public int Mileage { get; set; }
 
         [DisplayName("Selling Dealership")]
