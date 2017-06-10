@@ -1,0 +1,42 @@
+﻿@model MAutoSS.Web.Models.Employee.EmployeeInputModel
+
+@{
+    ViewBag.Title = "Dealerships";
+}
+
+@Html.Partial("DealershipOptionsPartial")
+
+@using (Html.BeginForm("EditEmployee", "Employee", FormMethod.Post, new { @class = "form-group center-form" }))
+{
+    <form class="form-horizontal dealership-form">
+        <fieldset class="form-group row">
+            <legend>Edit employee</legend>
+            <div class="form-group">
+                @Html.HiddenFor(x => x.EmployeeId)
+                @Html.LabelFor(x => x.FirstName, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.LastName, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.DealershipName, new { @class = "col-2 col-form-label" })
+                <br />
+                @Html.DropDownListFor(x => x.DealershipName, Model.DealerShips, new { @class = "form-control" })
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-outline-primary submit-new-dealership" value="Create" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+}
