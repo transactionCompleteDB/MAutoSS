@@ -10,20 +10,16 @@ namespace MAutoSS.Services
     public class EmployeeService : IEmployeeService
     {
         private IGenericRepository<Employee> employeeRepo;
-        private IGenericRepository<Dealership> dealershipRepo;
         private IDealershipService dealershipService;
 
         public EmployeeService(
-            IGenericRepository<Employee> employeeRepo, 
-            IGenericRepository<Dealership> dealershipRepo,
+            IGenericRepository<Employee> employeeRepo,
             IDealershipService dealershipService)
         {
             Guard.WhenArgument(employeeRepo, "employeeRepo").IsNull().Throw();
-            Guard.WhenArgument(dealershipRepo, "dealershipRepo").IsNull().Throw();
             Guard.WhenArgument(dealershipService, "dealershipService").IsNull().Throw();
             
             this.employeeRepo = employeeRepo;
-            this.dealershipRepo = dealershipRepo;
             this.dealershipService = dealershipService;
         }
 
