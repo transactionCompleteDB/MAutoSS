@@ -16,6 +16,7 @@
         columns.Bound(e => e.LastName).Title("Last name").Width(190);
         columns.Bound(e => e.Dealership).Title("Dealership").Width(190);
         columns.Bound(e => e.NumberOfSales).Title("Number of sales").Width(190);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
 
     })
     .HtmlAttributes(new { style = "height: 550px;" })
@@ -29,7 +30,9 @@
     .DataSource(dataSource => dataSource
         .Ajax()
         .PageSize(20)
-        .ServerOperation(false)
+        .Model(model => model.Id(p => p.EmployeeId))
+        .Update(update => update.Action("UpdateEmployee", "Employee"))
+        .Destroy(update => update.Action("DeleteEmployee", "Employee"))
      )
         )
     </div>

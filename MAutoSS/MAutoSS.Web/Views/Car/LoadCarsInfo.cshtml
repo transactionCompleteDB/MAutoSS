@@ -29,7 +29,6 @@
         .DataSource(dataSource => dataSource
             .Ajax()
             .PageSize(5)
-            .Model(x => x.Id(c => c.CarId))
             ))
 
     </div>
@@ -37,5 +36,5 @@
 }
 else
 {
-    < h2 > There are no records for cars.</ h2 >
+    <h2>There are no records for cars.</h2>
 }
