@@ -257,6 +257,7 @@
     <Content Include="Views\Car\CreateNewCar.cshtml" />
     <Content Include="Views\Car\LoadCarsInfo.cshtml" />
     <Content Include="Views\Car\LoadSelectedCarInfo.cshtml" />
+    <Content Include="Views\Employee\EditEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

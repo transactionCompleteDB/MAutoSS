@@ -26,7 +26,7 @@
             <div class="form-group">
                 @Html.LabelFor(x => x.DealershipName, new { @class = "col-2 col-form-label" })
                 <br />
-                @Html.DropDownListFor(x => x.DealershipName, this.ViewBag.DealershipNamesDropdown as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.DropDownListFor(x => x.DealershipName, Model.DealerShips, new { @class = "form-control" })
             </div>
 
             <div class="row">

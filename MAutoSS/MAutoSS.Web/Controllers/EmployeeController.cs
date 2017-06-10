@@ -26,7 +26,7 @@ namespace MAutoSS.Web.Controllers
         [HttpGet]
         public ActionResult CreateNewEmployee()
         {
-            ICollection<SelectListItem> dealershipNamesDropdown = new List<SelectListItem>();
+            IList<SelectListItem> dealershipNamesDropdown = new List<SelectListItem>();
             IEnumerable<string> dealershipNames = this.dealershipService.GetAllDealershipsNames();
 
             foreach (var name in dealershipNames)
@@ -34,13 +34,16 @@ namespace MAutoSS.Web.Controllers
                 dealershipNamesDropdown.Add(new SelectListItem
                 {
                     Text = name,
-                    Value = name
+                    Value = name,
                 });
             }
 
-            this.ViewBag.DealershipNamesDropdown = dealershipNamesDropdown;
-            
-            return View();
+            var model = new EmployeeInputModel
+            {
+                DealerShips = dealershipNamesDropdown
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -62,14 +65,65 @@ namespace MAutoSS.Web.Controllers
             var allEmployees = this.employeeService.GetAllEmployees()
                  .Select(x => new EmployeeMainInfoModel
                  {
+                     EmployeeId = x.Id,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
                      Dealership = x.Dealership.Name,
                      NumberOfSales = x.Sales.Count
                  })
-                 .OrderBy(p=>p.Dealership);
+                 .OrderBy(p => p.Dealership);
 
             return View(allEmployees);
+        }
+
+        [HttpGet]
+        public ActionResult EditEmployee(int employeeId)
+        {
+            var employeeForEdit = this.employeeService.GetEmployeeById(employeeId);
+
+            ICollection<SelectListItem> dealershipNamesDropdown = new List<SelectListItem>();
+            IEnumerable<string> dealershipNames = this.dealershipService.GetAllDealershipsNames();
+
+            foreach (var name in dealershipNames)
+            {
+                var dropDownLithSelectedDealership = new SelectListItem
+                {
+                    Text = name,
+                    Value = name,
+                };
+
+                if (name == employeeForEdit.Dealership.Name)
+                {
+                    dropDownLithSelectedDealership.Selected = true;
+                }
+
+                dealershipNamesDropdown.Add(dropDownLithSelectedDealership);
+            }
+
+            var model = new EmployeeInputModel
+            {
+                EmployeeId = employeeForEdit.Id,
+                FirstName = employeeForEdit.FirstName,
+                LastName = employeeForEdit.LastName,
+                DealershipName = employeeForEdit.Dealership.Name,
+                DealerShips = dealershipNamesDropdown
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditEmployee(EmployeeInputModel model)
+        {
+            Guard.WhenArgument(model, "model").IsNull().Throw();
+
+            this.employeeService.EditEmployee(
+                model.EmployeeId,
+                model.FirstName,
+                model.LastName,
+                model.DealershipName);
+
+            return this.RedirectToAction("LoadEmployeesInfo");
         }
     }
 }
