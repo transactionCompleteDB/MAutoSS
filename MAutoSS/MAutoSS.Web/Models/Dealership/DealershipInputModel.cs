@@ -6,6 +6,7 @@ namespace MAutoSS.Web.Models.Dealership
 {
     public class DealershipInputModel
     {
+        [Required]
         [Display(Name = "Dealership name")]
         [StringLength(40, MinimumLength = 1, ErrorMessage = "Dealership should be between 1 and 40 chars long")]
         [Index(IsUnique = true)]
