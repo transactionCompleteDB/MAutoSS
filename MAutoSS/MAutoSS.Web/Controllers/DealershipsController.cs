@@ -76,9 +76,12 @@ namespace MAutoSS.Web.Controllers
 
             return View(allDealerships);
         }
+        [HttpGet]
+        public ActionResult ExportInfoDealer()
+        {
+            this.dealershipService.Export();
 
-
-
-
+            return View();
+        }
     }
 }

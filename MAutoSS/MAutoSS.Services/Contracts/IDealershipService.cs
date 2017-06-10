@@ -15,5 +15,7 @@ namespace MAutoSS.Services.Contracts
         Dealership GetDealershipByName(string name);
 
         void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName);
+
+        void Export();
     }
 }

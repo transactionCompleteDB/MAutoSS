@@ -5,6 +5,10 @@ using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
 using System.Linq;
 using Bytes2you.Validation;
+using System.Text;
+using MAutoSS.ReportGenerator;
+using System.IO;
+using System;
 
 namespace MAutoSS.Services
 {
@@ -91,6 +95,34 @@ namespace MAutoSS.Services
 
             this.addressRepo.Add(address);
             this.addressRepo.SaveChanges();
+        }
+        public void Export()
+        {
+            var builder = new StringBuilder();
+            var allDealerships = this.GetAllDealerships();
+
+            foreach (var dealer in allDealerships)
+            {
+                builder.AppendLine($"{dealer.Name}--{dealer.Address.AddressText}--{dealer.Address.City.Name}");
+                builder.AppendLine("Employees working in :");
+                if (dealer.Employees != null)
+                {
+                    foreach (var empl in dealer.Employees)
+                    {
+                        builder.AppendLine($"-----{empl.FirstName} {empl.LastName}");
+                    }
+                }
+                else
+                {
+                    builder.AppendLine("Nobody is working here!!");
+                }
+                builder.AppendLine("----------------------");
+            }
+
+            var strInfo = builder.ToString();
+            var pdf = new PDFReportGenerator();
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "PDFreport"));
+            pdf.GenerateReport(path, "Information", strInfo);
         }
     }
 }

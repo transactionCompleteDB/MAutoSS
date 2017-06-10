@@ -258,6 +258,7 @@
     <Content Include="Views\Car\LoadCarsInfo.cshtml" />
     <Content Include="Views\Car\LoadSelectedCarInfo.cshtml" />
     <Content Include="Views\Employee\EditEmployee.cshtml" />
+    <Content Include="Views\Dealerships\ExportInfoDealer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

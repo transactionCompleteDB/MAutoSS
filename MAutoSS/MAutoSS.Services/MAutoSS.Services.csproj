@@ -72,6 +72,10 @@
       <Project>{604ed7b5-3a1f-42dc-9ab8-4c7729951fbd}</Project>
       <Name>MAutoSS.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MAutoSS.ExportGenerator\MAutoSS.ExportGenerator.csproj">
+      <Project>{E1A233BB-2D07-438D-A491-2FD1BBABD80A}</Project>
+      <Name>MAutoSS.ExportGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
