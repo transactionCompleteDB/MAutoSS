@@ -28,6 +28,11 @@ namespace MAutoSS.Services
             return this.carRepo.GetAll();
         }
 
+        public Car GetCarById(int id)
+        {
+            return this.carRepo.GetAll().FirstOrDefault(x=> x.Id == id);
+        }
+
         public void CreateNewCar(
             int brandId,
             int modelId,
@@ -64,6 +69,12 @@ namespace MAutoSS.Services
 
             this.carRepo.Add(newCar);
             this.carRepo.SaveChanges();          
+        }
+
+        public void DeleteCar(Car car)
+        {
+            this.carRepo.Delete(car);
+            this.carRepo.SaveChanges();
         }
     }
 }
