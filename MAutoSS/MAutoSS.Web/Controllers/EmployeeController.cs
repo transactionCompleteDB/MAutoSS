@@ -125,5 +125,13 @@ namespace MAutoSS.Web.Controllers
 
             return this.RedirectToAction("LoadEmployeesInfo");
         }
+
+        [HttpGet]
+        public ActionResult DeleteEmployee(int employeeId)
+        {
+            this.employeeService.DeleteEmployee(employeeId);
+            
+            return this.RedirectToAction("LoadEmployeesInfo");
+        }
     }
 }

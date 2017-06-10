@@ -11,6 +11,8 @@ namespace MAutoSS.Services.Contracts
 
         void CreateNewEmployee(string firstName, string lastName, string dealershipName);
 
-        void EditEmployee(int employeeId,string firstName, string lastName, string dealershipName);
+        void EditEmployee(int employeeId, string firstName, string lastName, string dealershipName);
+
+        void DeleteEmployee(int employeeId);
     }
 }

@@ -63,5 +63,13 @@ namespace MAutoSS.Services
             this.employeeRepo.Update(employeeForEdit);
             this.employeeRepo.SaveChanges();
         }
+
+        public void DeleteEmployee(int employeeId)
+        {
+            var employeeForDelete = this.GetEmployeeById(employeeId);
+
+            this.employeeRepo.Delete(employeeForDelete);
+            this.employeeRepo.SaveChanges();
+        }
     }
 }
