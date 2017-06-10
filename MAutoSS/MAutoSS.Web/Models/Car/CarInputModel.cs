@@ -29,6 +29,7 @@ namespace MAutoSS.Web.Models.Car
         [DisplayName("Selling Dealership")]
         public int DealershipId { get; set; }
 
+        [DisplayName("Car Features")]
         public IList<CarFeatureViewModel> CarFeatures { get; set; }
     }
 }
