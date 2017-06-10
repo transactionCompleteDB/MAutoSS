@@ -1,12 +1,12 @@
 ﻿using System.Web.Mvc;
+using System.Linq;
+using System.Collections.Generic;
+
+using MAutoSS.Services.Contracts;
+using MAutoSS.DataModels;
+using MAutoSS.Web.Models.Car;
 
 using Bytes2you.Validation;
-using MAutoSS.Services.Contracts;
-using MAutoSS.Data.Repositories.Contracts;
-using MAutoSS.DataModels;
-using System.Linq;
-using MAutoSS.Web.Models.Car;
-using System.Collections.Generic;
 
 namespace MAutoSS.Web.Controllers
 {
@@ -94,7 +94,7 @@ namespace MAutoSS.Web.Controllers
             }
 
             this.ViewBag.TransmissionsDropdown = transmissionsDropdown;
-            
+
             ICollection<SelectListItem> vehicleTypesDropdown = new List<SelectListItem>();
             IEnumerable<VehicleType> vehicleTypesFromDb = this.vehicleTypesService.GetAllVehicleTypes();
 
@@ -202,19 +202,35 @@ namespace MAutoSS.Web.Controllers
         [HttpGet]
         public ActionResult LoadSelectedCarInfo(int carId)
         {
-            var allCars = this.carService.GetAllCars()
-                 .Select(x => new MainCarsInfo
-                 {
-                     CarId = x.Id,
-                     Brand = x.CarBrand.Brand,
-                     Model = x.CarModel.Model,
-                     ManifactureYear = x.ManufactureYear.ToString(),
-                     Mileage = x.Mileage.ToString(),
-                     Dealership = x.Dealership.Name
-                 });
+            var specificCar = this.carService.GetCarById(carId);
 
-            return View(allCars);
+            var model = new FullCarInfo
+            {
+                CarId = specificCar.Id,
+                Brand = specificCar.CarBrand.Brand,
+                Model = specificCar.CarModel.Model,
+                VehicleType = specificCar.VehicleType.Type,
+                ManufactureYear = specificCar.ManufactureYear.ToString(),
+                Mileage = specificCar.Mileage.ToString(),
+                TransmissionType = specificCar.TransimssionType.Type,
+                FuelType = specificCar.FuelType.Type,
+                Dealership = specificCar.Dealership.Name,
+                CarFeatures = specificCar.CarFeatures.Select(x => x.Name).ToList()
+            };
+
+            return View(model);
         }
+
+        [HttpGet]
+        public ActionResult DeleteCar(int carId)
+        {
+            var carForDeleting = this.carService.GetCarById(carId);
+
+            this.carService.DeleteCar(carForDeleting);
+
+            return RedirectToAction("LoadCarsInfo");
+        }
+
     }
 }
 
