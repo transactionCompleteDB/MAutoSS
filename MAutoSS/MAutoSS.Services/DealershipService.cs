@@ -118,7 +118,7 @@ namespace MAutoSS.Services
             {
                 builder.AppendLine($"{dealer.Name}--{dealer.Address.AddressText}--{dealer.Address.City.Name}");
                 builder.AppendLine("Employees working in :");
-                if (dealer.Employees != null || dealer.Employees.Count != 0)
+                if (dealer.Employees.Any<Employee>())
                 {
                     foreach (var empl in dealer.Employees)
                     {
