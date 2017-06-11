@@ -30,7 +30,7 @@ namespace MAutoSS.Services
             Guard.WhenArgument(addressRepo, "addressRepo").IsNull().Throw();
             Guard.WhenArgument(citiesRepo, "citiesRepo").IsNull().Throw();
             Guard.WhenArgument(countriesRepo, "countriesRepo").IsNull().Throw();
-            
+
             this.dealershipRepo = dealershipRepo;
             this.addressRepo = addressRepo;
             this.citiesRepo = citiesRepo;
@@ -60,23 +60,32 @@ namespace MAutoSS.Services
 
         public void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName)
         {
-            var country = new Country
+            var existingCountry = countriesRepo.GetAll().FirstOrDefault(x => x.Name == countryName);
+            if (existingCountry == null)
             {
-                Name = countryName
-            };
+                var country = new Country
+                {
+                    Name = countryName
+                };
+                this.countriesRepo.Add(country);
+                this.countriesRepo.SaveChanges();
+            }
+            existingCountry = countriesRepo.GetAll().First(x => x.Name == countryName);
 
-            this.countriesRepo.Add(country);
-            this.countriesRepo.SaveChanges();
 
-            var city = new City
+            var existingCity = citiesRepo.GetAll().FirstOrDefault(x => x.Name == cityName);
+            if (existingCity == null)
             {
-                Name = cityName,
-                CountryId = country.Id
-            };
+                var city = new City
+                {
+                    Name = cityName,
+                    CountryId = existingCountry.Id
+                };
 
-            this.citiesRepo.Add(city);
-            this.citiesRepo.SaveChanges();
-
+                this.citiesRepo.Add(city);
+                this.citiesRepo.SaveChanges();
+            }
+            existingCity = citiesRepo.GetAll().First(x => x.Name == cityName);
 
             var dealership = new Dealership
             {
@@ -86,15 +95,19 @@ namespace MAutoSS.Services
             this.dealershipRepo.Add(dealership);
             this.dealershipRepo.SaveChanges();
 
-            var address = new Address
+            var existingAdres = addressRepo.GetAll().FirstOrDefault(x => x.AddressText == addressText);
+            if (existingAdres == null)
             {
-                Id = dealership.Id,
-                AddressText = addressText,
-                CityId = city.Id
-            };
+                var address = new Address
+                {
+                    Id = dealership.Id,
+                    AddressText = addressText,
+                    CityId = existingCity.Id
+                };
 
-            this.addressRepo.Add(address);
-            this.addressRepo.SaveChanges();
+                this.addressRepo.Add(address);
+                this.addressRepo.SaveChanges();
+            }
         }
         public void Export()
         {
@@ -105,7 +118,7 @@ namespace MAutoSS.Services
             {
                 builder.AppendLine($"{dealer.Name}--{dealer.Address.AddressText}--{dealer.Address.City.Name}");
                 builder.AppendLine("Employees working in :");
-                if (dealer.Employees != null)
+                if (dealer.Employees != null || dealer.Employees.Count != 0)
                 {
                     foreach (var empl in dealer.Employees)
                     {
