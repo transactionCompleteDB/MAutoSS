@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 
 using MAutoSS.Data.Repositories.Contracts;
 
-
 namespace MAutoSS.Data.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class

@@ -1,24 +1,17 @@
+using System.Data.Entity.Migrations;
+
 namespace MAutoSS.Data.Postgre.Migrations
 {
-    using MAutoSS.DataModels.Postgre.Models;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<MAutoSS.Data.Postgre.MAutoSSDbContextPostgre>
+    public sealed class Configuration : DbMigrationsConfiguration<MAutoSSDbContextPostgre>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(MAutoSS.Data.Postgre.MAutoSSDbContextPostgre context)
+        protected override void Seed(MAutoSSDbContextPostgre context)
         {
-            var discount = new Discount();
-            discount.DiscountPercentage = 5;
-
-            context.Discounts.Add(discount);
         }
     }
 }

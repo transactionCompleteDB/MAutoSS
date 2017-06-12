@@ -6,9 +6,9 @@ namespace MAutoSS.Data.Postgre
 {
     public class MAutoSSDbContextPostgre : DbContext, IMAutoSSDbContextPostgre
     {
-        public MAutoSSDbContextPostgre() : base("PostgreConnection")
+        public MAutoSSDbContextPostgre() 
+            : base("PostgreConnection")
         {
-
         }
 
         public virtual IDbSet<Customer> Customers { get; set; }

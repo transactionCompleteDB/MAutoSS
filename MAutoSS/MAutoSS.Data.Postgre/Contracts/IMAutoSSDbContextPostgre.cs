@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace MAutoSS.Data.Postgre.Contracts
 {
-    interface IMAutoSSDbContextPostgre
+    public interface IMAutoSSDbContextPostgre
     {
         IDbSet<Customer> Customers { get; set; }
 
