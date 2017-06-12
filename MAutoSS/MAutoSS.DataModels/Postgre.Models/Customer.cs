@@ -16,10 +16,8 @@ namespace MAutoSS.DataModels.Postgre.Models
         [MaxLength(20)]
         public string LastName { get; set; }
 
-        [Required]
         public int DiscountId { get; set; }
 
-        [Required]
-        public Discount Discount { get; set; }
+        public virtual Discount Discount { get; set; }
     }
 }
