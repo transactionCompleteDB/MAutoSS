@@ -21,21 +21,23 @@ namespace MAutoSS.Web.App_Start
     using MAutoSS.Data.Postgre.Contracts;
     using Ninject.Activation;
     using System.Linq;
+    using MAutoSS.DataModels.Postgre.Models;
+    using MAutoSS.DataModels;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -43,7 +45,7 @@ namespace MAutoSS.Web.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -73,14 +75,67 @@ namespace MAutoSS.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-
             //SQL Server dbcontext bindings
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<Address>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<Car>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<CarBrand>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<CarFeature>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<CarModel>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<City>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<Country>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<Dealership>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+               .WhenInjectedInto<IGenericRepository<Employee>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+               .WhenInjectedInto<IGenericRepository<FuelType>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<Sale>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<TransimssionType>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<VehicleType>>();
+
+
+
+
+            //PostgreSQL dbcontext bindings
+            kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>()
+                .WhenInjectedInto<IGenericRepository<Customer>>();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>()
+                .WhenInjectedInto<IGenericRepository<Discount>>();
+
+
+
+
+            //OLD BINDINGS (WORKING SEPARATELY) SQL Server dbcontext bindings
             //kernel.Bind<DbContext>().To<MAutoSSDbContext>().InRequestScope();
             //kernel.Bind<IMAutoSSDbContext>().To<MAutoSSDbContext>().InRequestScope();
 
-            //PostgreSQL dbcontext bindings
-            kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>().InRequestScope();
-            kernel.Bind<IMAutoSSDbContextPostgre>().To<MAutoSSDbContextPostgre>().InRequestScope();
+
+            //OLD BINDINGS (WORKING SEPARATELY) PostgreSQL dbcontext bindings
+            //kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>().InRequestScope();
+            //kernel.Bind<IMAutoSSDbContextPostgre>().To<MAutoSSDbContextPostgre>().InRequestScope();
 
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
 
@@ -97,19 +152,5 @@ namespace MAutoSS.Web.App_Start
             kernel.Bind<ICustomerService>().To<CustomerService>().InRequestScope();
             kernel.Bind<IDiscountService>().To<DiscountService>().InRequestScope();
         }
-
-        public static bool IsInjectingToRepositoryDataSourceOfNamespace(
-          this IRequest request, string entityNamespace)
-        {
-            if (request.ParentRequest.Service.GetGenericTypeDefinition() ==
-                 typeof(DbContext))
-            {
-                return request.ParentRequest.Service.GetGenericArguments().First().Namespace
-                     == entityNamespace;
-            }
-
-            return false;
-        }
-        
     }
 }
