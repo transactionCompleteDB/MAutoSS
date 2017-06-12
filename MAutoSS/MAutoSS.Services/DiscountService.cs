@@ -1,14 +1,16 @@
-﻿using Bytes2you.Validation;
+﻿using System.Collections.Generic;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels.Postgre.Models;
 using MAutoSS.Services.Contracts;
-using System.Collections.Generic;
 
 namespace MAutoSS.Services
 {
     public class DiscountService : IDiscountService
     {
-        private IGenericRepository<Discount> discountsRepo;
+        private readonly IGenericRepository<Discount> discountsRepo;
 
         public DiscountService(IGenericRepository<Discount> discountsRepo)
         {

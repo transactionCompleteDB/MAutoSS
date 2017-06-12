@@ -18,7 +18,7 @@ namespace MAutoSS.DataModels
         public int ManufactureYear { get; set; }
 
         [Range(0, 4000000)]
-        public int Mileage{ get; set; }
+        public int Mileage { get; set; }
 
         public int DealershipId { get; set; }
 

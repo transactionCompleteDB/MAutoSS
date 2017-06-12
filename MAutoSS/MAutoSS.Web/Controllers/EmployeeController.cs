@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 using Bytes2you.Validation;
 
 using MAutoSS.Services.Contracts;
 using MAutoSS.Web.Models.Employee;
-using System.Linq;
 
 namespace MAutoSS.Web.Controllers
 {
     public class EmployeeController : Controller
     {
-        private IEmployeeService employeeService;
-        private IDealershipService dealershipService;
+        private readonly IEmployeeService employeeService;
+        private readonly IDealershipService dealershipService;
 
-        public EmployeeController(IEmployeeService employeeService, IDealershipService dealershipService)
+        public EmployeeController(
+            IEmployeeService employeeService,
+            IDealershipService dealershipService)
         {
             Guard.WhenArgument(employeeService, "employeeService").IsNull().Throw();
             Guard.WhenArgument(dealershipService, "dealershipService").IsNull().Throw();
@@ -28,6 +30,8 @@ namespace MAutoSS.Web.Controllers
         {
             IList<SelectListItem> dealershipNamesDropdown = new List<SelectListItem>();
             IEnumerable<string> dealershipNames = this.dealershipService.GetAllDealershipsNames();
+
+            Guard.WhenArgument(dealershipNames, "dealershipNames").IsNull().Throw();
 
             foreach (var name in dealershipNames)
             {
@@ -43,7 +47,7 @@ namespace MAutoSS.Web.Controllers
                 DealerShips = dealershipNamesDropdown
             };
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpPost]
@@ -73,16 +77,19 @@ namespace MAutoSS.Web.Controllers
                  })
                  .OrderBy(p => p.Dealership);
 
-            return View(allEmployees);
+            return this.View(allEmployees);
         }
 
         [HttpGet]
         public ActionResult EditEmployee(int employeeId)
         {
             var employeeForEdit = this.employeeService.GetEmployeeById(employeeId);
+            Guard.WhenArgument(employeeForEdit, "employeeForEdit").IsNull().Throw();
 
             ICollection<SelectListItem> dealershipNamesDropdown = new List<SelectListItem>();
             IEnumerable<string> dealershipNames = this.dealershipService.GetAllDealershipsNames();
+
+            Guard.WhenArgument(dealershipNames, "dealershipNames").IsNull().Throw();
 
             foreach (var name in dealershipNames)
             {
@@ -109,7 +116,7 @@ namespace MAutoSS.Web.Controllers
                 DealerShips = dealershipNamesDropdown
             };
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpPost]

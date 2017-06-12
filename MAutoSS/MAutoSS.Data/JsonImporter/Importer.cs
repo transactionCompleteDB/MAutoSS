@@ -1,9 +1,10 @@
-﻿using MAutoSS.DataModels;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
+
+using MAutoSS.DataModels;
+using Newtonsoft.Json.Linq;
 
 namespace MAutoSS.Data.JsonImporter
 {
@@ -15,7 +16,6 @@ namespace MAutoSS.Data.JsonImporter
 
             JArray allBrands = JArray.Parse(File.ReadAllText(path));
 
-
             foreach (var brand in allBrands)
             {
                 var name = brand.ToString();
@@ -23,9 +23,10 @@ namespace MAutoSS.Data.JsonImporter
                 {
                     Brand = name
                 };
-                context.CarBrands.AddOrUpdate(newBrand);
 
+                context.CarBrands.AddOrUpdate(newBrand);
             }
+
             context.SaveChanges();
         }
 
@@ -61,16 +62,15 @@ namespace MAutoSS.Data.JsonImporter
                     context.CarModels.AddOrUpdate(newModel);
                 }
             }
+
             context.SaveChanges();
         }
 
         public static void ImportCarFeature(MAutoSSDbContext context)
-
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "car-feature.json");
 
             JArray allfeatures = JArray.Parse(File.ReadAllText(path));
-
 
             foreach (var feat in allfeatures)
             {
@@ -79,9 +79,10 @@ namespace MAutoSS.Data.JsonImporter
                 {
                     Name = name
                 };
-                context.CarFeatures.AddOrUpdate(newFeat);
 
+                context.CarFeatures.AddOrUpdate(newFeat);
             }
+
             context.SaveChanges();
         }
 
@@ -90,8 +91,7 @@ namespace MAutoSS.Data.JsonImporter
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "dealership.json");
 
             JArray allDealers = JArray.Parse(File.ReadAllText(path));
-
-
+            
             foreach (var deal in allDealers)
             {
                 var name = deal.ToString();
@@ -99,9 +99,10 @@ namespace MAutoSS.Data.JsonImporter
                 {
                     Name = name
                 };
-                context.Dealerships.AddOrUpdate(newDealer);
 
+                context.Dealerships.AddOrUpdate(newDealer);
             }
+
             context.SaveChanges();
         }
 
@@ -114,8 +115,9 @@ namespace MAutoSS.Data.JsonImporter
             foreach (var empl in allEmployyes)
             {
                 var firstName = empl["FirstName"].ToString();
-                var LastName = empl["LastName"].ToString();
+                var lastName = empl["LastName"].ToString();
                 var allDealerId = context.Dealerships.Select(x => x.Id).ToArray();
+
                 Random dealer = new Random();
                 int randomIndex = dealer.Next(0, allDealerId.Length);
                 int randomNumber = allDealerId[randomIndex];
@@ -123,9 +125,10 @@ namespace MAutoSS.Data.JsonImporter
                 var newEmploy = new Employee
                 {
                     FirstName = firstName,
-                    LastName = LastName,
+                    LastName = lastName,
                     DealershipId = randomNumber
                 };
+
                 context.Employees.AddOrUpdate(newEmploy);
             }
 
@@ -137,8 +140,7 @@ namespace MAutoSS.Data.JsonImporter
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "countries.json");
 
             JArray allCountries = JArray.Parse(File.ReadAllText(path));
-
-
+            
             foreach (var country in allCountries)
             {
                 var name = country.ToString();
@@ -146,9 +148,10 @@ namespace MAutoSS.Data.JsonImporter
                 {
                     Name = name
                 };
-                context.Countries.AddOrUpdate(newCountry);
 
+                context.Countries.AddOrUpdate(newCountry);
             }
+
             context.SaveChanges();
         }
 
@@ -183,8 +186,10 @@ namespace MAutoSS.Data.JsonImporter
 
                 context.Cities.AddOrUpdate(newCity);
             }
+
             context.SaveChanges();
         }
+
         public static void ImportAdresses(MAutoSSDbContext context)
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "JsonFiles"), "adresses.json");
@@ -204,6 +209,7 @@ namespace MAutoSS.Data.JsonImporter
                     default: return 0;
                 }
             }
+
             int DoSwitchDealer(string some)
             {
                 switch (some)
@@ -226,14 +232,12 @@ namespace MAutoSS.Data.JsonImporter
                     AddressText = name,
                     CityId = DoSwitch(name),
                     Id = DoSwitchDealer(name)
-
                 };
 
                 context.Addresses.AddOrUpdate(newAdres);
             }
+
             context.SaveChanges();
         }
-
     }
 }
-

@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
-using Bytes2you.Validation;
-using System.Linq;
 
 namespace MAutoSS.Services
 {
     public class CarService : ICarService
     {
-        private IGenericRepository<Car> carRepo;
-        private ICarFeaturesService carFeatureService;
+        private readonly IGenericRepository<Car> carRepo;
+        private readonly ICarFeaturesService carFeatureService;
 
         public CarService(
            IGenericRepository<Car> carRepo,
@@ -30,7 +32,7 @@ namespace MAutoSS.Services
 
         public Car GetCarById(int id)
         {
-            return this.carRepo.GetAll().FirstOrDefault(x=> x.Id == id);
+            return this.carRepo.GetAll().FirstOrDefault(x => x.Id == id);
         }
 
         public void CreateNewCar(

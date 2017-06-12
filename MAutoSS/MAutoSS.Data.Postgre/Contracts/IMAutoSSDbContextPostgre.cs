@@ -1,5 +1,5 @@
-﻿using MAutoSS.DataModels.Postgre.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using MAutoSS.DataModels.Postgre.Models;
 
 namespace MAutoSS.Data.Postgre.Contracts
 {

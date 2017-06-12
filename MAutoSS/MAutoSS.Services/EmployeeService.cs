@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-
-using MAutoSS.DataModels;
-using MAutoSS.Data.Repositories.Contracts;
-using MAutoSS.Services.Contracts;
-using Bytes2you.Validation;
 using System.Linq;
-using System;
+
+using Bytes2you.Validation;
+
+using MAutoSS.Data.Repositories.Contracts;
+using MAutoSS.DataModels;
+using MAutoSS.Services.Contracts;
 
 namespace MAutoSS.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        private IGenericRepository<Employee> employeeRepo;
-        private IDealershipService dealershipService;
+        private readonly IGenericRepository<Employee> employeeRepo;
+        private readonly IDealershipService dealershipService;
 
         public EmployeeService(
             IGenericRepository<Employee> employeeRepo,
@@ -58,7 +58,7 @@ namespace MAutoSS.Services
 
             employeeForEdit.FirstName = firstName;
             employeeForEdit.LastName = lastName;
-            employeeForEdit.Dealership= dealershipAttachTo;
+            employeeForEdit.Dealership = dealershipAttachTo;
 
             this.employeeRepo.Update(employeeForEdit);
             this.employeeRepo.SaveChanges();

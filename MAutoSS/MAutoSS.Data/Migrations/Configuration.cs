@@ -18,20 +18,20 @@ namespace MAutoSS.Data.Migrations
         {
             if (context.TransimssionTypes.Count() == 0)
             {
-                AddTransimssionTypes(context);
+                this.AddTransimssionTypes(context);
             }
 
             if (context.FuelTypes.Count() == 0)
             {
-                AddFuelTypes(context);
+                this.AddFuelTypes(context);
             }
 
             if (context.VehicleTypes.Count() == 0)
             {
-                AddVehicleTypes(context);
+                this.AddVehicleTypes(context);
             }
 
-            if(context.CarBrands.Count()==0)
+            if (context.CarBrands.Count() == 0)
             {
                 Importer.ImportBrands(context);
             }
@@ -70,12 +70,11 @@ namespace MAutoSS.Data.Migrations
             {
                 Importer.ImportAdresses(context);
             }
-
         }
 
         private void AddTransimssionTypes(MAutoSSDbContext context)
         {
-            context.TransimssionTypes.Add(new TransimssionType () { Type = "Manual" });
+            context.TransimssionTypes.Add(new TransimssionType() { Type = "Manual" });
             context.TransimssionTypes.Add(new TransimssionType() { Type = "Automatic" });
             context.TransimssionTypes.Add(new TransimssionType() { Type = "Semi-Automatic" });
         }

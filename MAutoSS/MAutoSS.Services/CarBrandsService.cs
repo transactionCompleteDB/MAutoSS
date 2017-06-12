@@ -1,14 +1,16 @@
-﻿using Bytes2you.Validation;
+﻿using System.Collections.Generic;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
-using System.Collections.Generic;
 
 namespace MAutoSS.Services
 {
     public class CarBrandsService : ICarBrandsService
     {
-        private IGenericRepository<CarBrand> carBrandsRepo;
+        private readonly IGenericRepository<CarBrand> carBrandsRepo;
 
         public CarBrandsService(
            IGenericRepository<CarBrand> carBrandsRepo)

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MAutoSS.DataModels
 {
@@ -23,13 +22,11 @@ namespace MAutoSS.DataModels
         public virtual ICollection<Address> Addresses
         {
             get { return this.adresses; }
-            set { this.adresses = value;}
+            set { this.adresses = value; }
         }
 
         public int CountryId { get; set; }
 
         public virtual Country Country { get; set; }
     }
-
-
 }

@@ -14,7 +14,7 @@ namespace MAutoSS.DataModels.Postgre.Models
 
         public int Id { get; set; }
 
-        [Range(0,100)]
+        [Range(0, 100)]
         public decimal DiscountPercentage { get; set; }
 
         public virtual ICollection<Customer> Customers

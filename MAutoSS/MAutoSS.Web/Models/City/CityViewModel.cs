@@ -1,5 +1,5 @@
-﻿using MAutoSS.Web.Models.Country;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using MAutoSS.Web.Models.Country;
 
 namespace MAutoSS.Web.Models.City
 {

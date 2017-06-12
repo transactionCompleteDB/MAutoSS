@@ -1,16 +1,18 @@
-﻿using Bytes2you.Validation;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels.Postgre.Models;
 using MAutoSS.Services.Contracts;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MAutoSS.Services
 {
     public class CustomerService : ICustomerService
     {
-        private IGenericRepository<Customer> customersRepo;
-        private IDiscountService discountService;
+        private readonly IGenericRepository<Customer> customersRepo;
+        private readonly IDiscountService discountService;
 
         public CustomerService(
             IGenericRepository<Customer> customersRepo,

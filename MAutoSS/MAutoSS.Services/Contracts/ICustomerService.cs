@@ -1,6 +1,6 @@
-﻿using MAutoSS.DataModels.Postgre.Models;
+﻿using System.Collections.Generic;
 
-using System.Collections.Generic;
+using MAutoSS.DataModels.Postgre.Models;
 
 namespace MAutoSS.Services.Contracts
 {

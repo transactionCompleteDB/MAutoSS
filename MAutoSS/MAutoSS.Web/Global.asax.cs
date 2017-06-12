@@ -12,7 +12,7 @@ namespace MAutoSS.Web
         {
             SqlDbConfig.Initialize();
             PostgreDbConfig.Initialize();
-            //SQLiteDbConfig.Initialize();
+            // SQLiteDbConfig.Initialize();
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

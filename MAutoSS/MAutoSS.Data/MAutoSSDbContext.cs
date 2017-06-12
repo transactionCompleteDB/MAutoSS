@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 using MAutoSS.Data.Contracts;
 using MAutoSS.DataModels;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace MAutoSS.Data
 {

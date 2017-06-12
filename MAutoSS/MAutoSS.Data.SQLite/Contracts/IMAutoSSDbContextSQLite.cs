@@ -1,5 +1,5 @@
-﻿using MAutoSS.DataModels.SQLite.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using MAutoSS.DataModels.SQLite.Models;
 
 namespace MAutoSS.Data.SQLite.Contracts
 {

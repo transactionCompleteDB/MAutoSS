@@ -1,5 +1,6 @@
-﻿using MAutoSS.DataModels.SQLite.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using MAutoSS.DataModels.SQLite.Models;
 
 namespace MAutoSS.Services.Contracts.SQLiteContracts
 {

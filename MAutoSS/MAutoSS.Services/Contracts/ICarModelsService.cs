@@ -1,5 +1,5 @@
-﻿using MAutoSS.DataModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MAutoSS.DataModels;
 
 namespace MAutoSS.Services.Contracts
 {

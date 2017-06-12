@@ -1,6 +1,6 @@
-﻿using MAutoSS.Web.Models.Address;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MAutoSS.Web.Models.Address;
 
 namespace MAutoSS.Web.Models.Dealership
 {

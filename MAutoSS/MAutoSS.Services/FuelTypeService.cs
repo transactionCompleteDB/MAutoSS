@@ -1,15 +1,16 @@
-﻿using MAutoSS.Services.Contracts;
-using System.Collections.Generic;
-using MAutoSS.DataModels;
-using MAutoSS.Data.Repositories.Contracts;
+﻿using System.Collections.Generic;
+
 using Bytes2you.Validation;
-using System.Linq;
+
+using MAutoSS.Data.Repositories.Contracts;
+using MAutoSS.DataModels;
+using MAutoSS.Services.Contracts;
 
 namespace MAutoSS.Services
 {
     public class FuelTypeService : IFuelTypeService
     {
-        private IGenericRepository<FuelType> fuelTypeRepo;
+        private readonly IGenericRepository<FuelType> fuelTypeRepo;
 
         public FuelTypeService(
            IGenericRepository<FuelType> fuelTypeRepo)

@@ -1,14 +1,16 @@
-﻿using Bytes2you.Validation;
+﻿using System.Linq;
+using System.Web.Mvc;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Services.Contracts;
 using MAutoSS.Web.Models.Customer;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace MAutoSS.Web.Controllers
 {
     public class CustomerController : Controller
     {
-        private ICustomerService customerService;
+        private readonly ICustomerService customerService;
 
         public CustomerController(
             ICustomerService customerService)
@@ -33,6 +35,8 @@ namespace MAutoSS.Web.Controllers
         [HttpPost]
         public ActionResult CreateNewCustomer(CustomerModel model)
         {
+            Guard.WhenArgument(model, "model").IsNull().Throw();
+
             this.customerService.CreateNewCustomer(
                 model.FirstName,
                 model.LastName,
@@ -53,7 +57,7 @@ namespace MAutoSS.Web.Controllers
                     Discount = x.Discount.DiscountPercentage.ToString()
                 });
 
-            return View(allCustomers);
+            return this.View(allCustomers);
         }
     }
 }

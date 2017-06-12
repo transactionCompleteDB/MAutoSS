@@ -16,7 +16,6 @@ namespace MAutoSS.Web
                        "~/Scripts/Kendo/kendo.aspnetmvc.min.js",
                        "~/Scripts/Kendo/kendo.aspnetmvc.min.js"));
             
-
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 

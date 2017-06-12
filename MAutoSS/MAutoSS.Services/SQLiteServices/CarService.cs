@@ -1,9 +1,11 @@
-﻿using Bytes2you.Validation;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels.SQLite.Models;
 using MAutoSS.Services.Contracts.SQLiteContracts;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MAutoSS.Services.SQLiteServices
 {
@@ -52,7 +54,7 @@ namespace MAutoSS.Services.SQLiteServices
         {
             var carServiceInfo = serviceInfo;
 
-            var car = GetCarByVIN(VIN);
+            var car = this.GetCarByVIN(VIN);
 
             car.ServiceInfo.Add(new ServiceInfo
             {
@@ -64,7 +66,7 @@ namespace MAutoSS.Services.SQLiteServices
 
         public IEnumerable<ServiceInfo> GetServiceDescriptionForCar(int VIN)
         {
-            var car = GetCarByVIN(VIN);
+            var car = this.GetCarByVIN(VIN);
             return car.ServiceInfo;
         }
 

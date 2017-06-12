@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,6 +9,7 @@ namespace MAutoSS.DataModels
         private ICollection<Car> cars;
 
         private ICollection<CarModel> carModels;
+
         public CarBrand()
         {
             this.cars = new HashSet<Car>();
@@ -36,6 +35,5 @@ namespace MAutoSS.DataModels
             get { return this.carModels; }
             set { this.carModels = value; }
         }
-
     }
 }

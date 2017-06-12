@@ -1,18 +1,19 @@
-﻿using MAutoSS.Data.Repositories.Contracts;
+﻿using System.Linq;
+using System.Web.Mvc;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Services.Contracts;
 using MAutoSS.Web.Models.Address;
-using MAutoSS.Web.Models.Dealership;
-using System.Linq;
-using System.Web.Mvc;
 using MAutoSS.Web.Models.City;
 using MAutoSS.Web.Models.Country;
-using Bytes2you.Validation;
+using MAutoSS.Web.Models.Dealership;
 
 namespace MAutoSS.Web.Controllers
 {
     public class DealershipsController : Controller
     {
-        private IDealershipService dealershipService;
+        private readonly IDealershipService dealershipService;
 
         public DealershipsController(IDealershipService dealershipService)
         {
@@ -23,13 +24,13 @@ namespace MAutoSS.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
                 
         [HttpGet]
         public ActionResult CreateNewDealership()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -44,7 +45,6 @@ namespace MAutoSS.Web.Controllers
                 model.Address.City.Country.Name);
 
             return this.RedirectToAction("LoadDealershipInfo");
-
         }
 
         [HttpGet]
@@ -68,19 +68,17 @@ namespace MAutoSS.Web.Controllers
                      },
                      NumberOfCars = x.Cars.Count,
                      NumberOfEmployees = x.Employees.Count
-
-
                  });
 
-
-            return View(allDealerships);
+            return this.View(allDealerships);
         }
+
         [HttpGet]
         public ActionResult ExportInfoDealer()
         {
             this.dealershipService.Export();
 
-            return View();
+            return this.View();
         }
     }
 }

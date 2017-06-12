@@ -22,6 +22,5 @@ namespace MAutoSS.Data.SQLite.Migrations
 
             context.ServiceInfos.Add(serviceInof);
         }
-
     }
 }

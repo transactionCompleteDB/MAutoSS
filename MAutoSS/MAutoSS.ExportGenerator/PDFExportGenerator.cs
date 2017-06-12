@@ -1,7 +1,7 @@
-﻿using iTextSharp.text;
+﻿using System.IO;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MAutoSS.ReportGenerator.Contracts;
-using System.IO;
 
 namespace MAutoSS.ReportGenerator
 {

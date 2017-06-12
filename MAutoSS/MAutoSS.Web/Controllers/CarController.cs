@@ -1,25 +1,25 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
-
-using MAutoSS.Services.Contracts;
-using MAutoSS.DataModels;
-using MAutoSS.Web.Models.Car;
+using System.Web.Mvc;
 
 using Bytes2you.Validation;
+
+using MAutoSS.DataModels;
+using MAutoSS.Services.Contracts;
+using MAutoSS.Web.Models.Car;
 
 namespace MAutoSS.Web.Controllers
 {
     public class CarController : Controller
     {
-        private ICarFeaturesService carFeaturesService;
-        private ICarService carService;
-        private ICarBrandsService carBrandsService;
-        private ICarModelsService carModelsService;
-        private ITransmissionTypesService transmissionTypesService;
-        private IFuelTypeService fuelTypesService;
-        private IVehicleTypeService vehicleTypesService;
-        private IDealershipService dealersipService;
+        private readonly ICarFeaturesService carFeaturesService;
+        private readonly ICarService carService;
+        private readonly ICarBrandsService carBrandsService;
+        private readonly ICarModelsService carModelsService;
+        private readonly ITransmissionTypesService transmissionTypesService;
+        private readonly IFuelTypeService fuelTypesService;
+        private readonly IVehicleTypeService vehicleTypesService;
+        private readonly IDealershipService dealersipService;
 
         public CarController(
             ICarFeaturesService carFeaturesService,
@@ -56,6 +56,8 @@ namespace MAutoSS.Web.Controllers
             ICollection<SelectListItem> carBrandsDropdown = new List<SelectListItem>();
             IEnumerable<CarBrand> carBrandsFromDb = this.carBrandsService.GetAllCarBrands();
 
+            Guard.WhenArgument(carBrandsFromDb, "carBrandsFromDb").IsNull().Throw();
+
             foreach (var brand in carBrandsFromDb)
             {
                 carBrandsDropdown.Add(new SelectListItem
@@ -69,6 +71,8 @@ namespace MAutoSS.Web.Controllers
 
             ICollection<SelectListItem> carModelsDropdown = new List<SelectListItem>();
             IEnumerable<CarModel> carModelsFromDb = this.carModelsService.GetAllCarModels();
+
+            Guard.WhenArgument(carModelsFromDb, "carModelsFromDb").IsNull().Throw();
 
             foreach (var carModel in carModelsFromDb)
             {
@@ -84,6 +88,8 @@ namespace MAutoSS.Web.Controllers
             ICollection<SelectListItem> transmissionsDropdown = new List<SelectListItem>();
             IEnumerable<TransimssionType> transmissionsFromDb = this.transmissionTypesService.GetAllTransmissions();
 
+            Guard.WhenArgument(transmissionsFromDb, "transmissionsFromDb").IsNull().Throw();
+
             foreach (var type in transmissionsFromDb)
             {
                 transmissionsDropdown.Add(new SelectListItem
@@ -97,6 +103,8 @@ namespace MAutoSS.Web.Controllers
 
             ICollection<SelectListItem> vehicleTypesDropdown = new List<SelectListItem>();
             IEnumerable<VehicleType> vehicleTypesFromDb = this.vehicleTypesService.GetAllVehicleTypes();
+
+            Guard.WhenArgument(vehicleTypesFromDb, "vehicleTypesFromDb").IsNull().Throw();
 
             foreach (var type in vehicleTypesFromDb)
             {
@@ -112,6 +120,8 @@ namespace MAutoSS.Web.Controllers
             ICollection<SelectListItem> fuelTypesDropdown = new List<SelectListItem>();
             IEnumerable<FuelType> fuelTypesFromDb = this.fuelTypesService.GetAllFuelTypes();
 
+            Guard.WhenArgument(fuelTypesFromDb, "fuelTypesFromDb").IsNull().Throw();
+
             foreach (var type in fuelTypesFromDb)
             {
                 fuelTypesDropdown.Add(new SelectListItem
@@ -123,9 +133,10 @@ namespace MAutoSS.Web.Controllers
 
             this.ViewBag.FuelTypesDropdown = fuelTypesDropdown;
 
-
             ICollection<SelectListItem> dealershipsDropdown = new List<SelectListItem>();
             IEnumerable<Dealership> dealershipsFromDb = this.dealersipService.GetAllDealerships();
+
+            Guard.WhenArgument(dealershipsFromDb, "dealershipsFromDb").IsNull().Throw();
 
             foreach (var dealership in dealershipsFromDb)
             {
@@ -138,9 +149,6 @@ namespace MAutoSS.Web.Controllers
 
             this.ViewBag.DealershipsDropdown = dealershipsDropdown;
 
-
-
-
             var allFeatures = this.carFeaturesService.GetAllCarFeatures().Select(x => new CarFeatureViewModel
             {
                 CarFeatureId = x.Id,
@@ -149,13 +157,12 @@ namespace MAutoSS.Web.Controllers
             })
             .ToList();
 
-
             var model = new CarInputModel
             {
                 CarFeatures = allFeatures
             };
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpPost]
@@ -179,7 +186,7 @@ namespace MAutoSS.Web.Controllers
                 model.DealershipId,
                 selectedCarFeaturesIds);
 
-            return RedirectToAction("LoadCarsInfo");
+            return this.RedirectToAction("LoadCarsInfo");
         }
 
         [HttpGet]
@@ -196,7 +203,7 @@ namespace MAutoSS.Web.Controllers
                      Dealership = x.Dealership.Name
                  });
 
-            return View(allCars);
+            return this.View(allCars);
         }
 
         [HttpGet]
@@ -218,7 +225,7 @@ namespace MAutoSS.Web.Controllers
                 CarFeatures = specificCar.CarFeatures.Select(x => x.Name).ToList()
             };
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpGet]
@@ -228,10 +235,7 @@ namespace MAutoSS.Web.Controllers
 
             this.carService.DeleteCar(carForDeleting);
 
-            return RedirectToAction("LoadCarsInfo");
+            return this.RedirectToAction("LoadCarsInfo");
         }
-
     }
 }
-
-

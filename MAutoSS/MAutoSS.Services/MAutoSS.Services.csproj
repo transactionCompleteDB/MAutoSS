@@ -47,7 +47,7 @@
     <Compile Include="CarFeaturesService.cs" />
     <Compile Include="CarModelsService.cs" />
     <Compile Include="CarService.cs" />
-    <Compile Include="Contracts\DiscountService.cs" />
+    <Compile Include="DiscountService.cs" />
     <Compile Include="Contracts\ICarBrandsService.cs" />
     <Compile Include="Contracts\ICarFeaturesService.cs" />
     <Compile Include="Contracts\ICarModelsService.cs" />

@@ -1,15 +1,16 @@
-﻿using Bytes2you.Validation;
+﻿using System.Collections.Generic;
+
+using Bytes2you.Validation;
+
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
 using MAutoSS.Services.Contracts;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MAutoSS.Services
 {
     public class TransmissionTypeService : ITransmissionTypesService
     {
-        private IGenericRepository<TransimssionType> transmissionRepo;
+        private readonly IGenericRepository<TransimssionType> transmissionRepo;
 
         public TransmissionTypeService(
            IGenericRepository<TransimssionType> transmissionRepo)
@@ -25,4 +26,3 @@ namespace MAutoSS.Services
         }
     }
 }
-

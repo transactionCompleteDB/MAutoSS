@@ -1,6 +1,6 @@
-﻿using MAutoSS.Data.SQLite.Contracts;
+﻿using System.Data.Entity;
+using MAutoSS.Data.SQLite.Contracts;
 using MAutoSS.DataModels.SQLite.Models;
-using System.Data.Entity;
 
 namespace MAutoSS.Data.SQLite
 {

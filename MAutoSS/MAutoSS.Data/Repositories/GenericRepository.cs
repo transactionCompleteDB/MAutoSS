@@ -20,7 +20,6 @@ namespace MAutoSS.Data.Repositories
 
         protected DbSet<T> DbSet { get; set; }
 
-
         public IEnumerable<T> GetAll()
         {
             return this.DbSet.ToList();
@@ -34,6 +33,7 @@ namespace MAutoSS.Data.Repositories
             {
                 result = result.Where(filterExpression);
             }
+
             if (selectExpression != null)
             {
                 return result.Select(selectExpression).ToList();

@@ -1,24 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+using Bytes2you.Validation;
 
 using MAutoSS.Data.Repositories.Contracts;
 using MAutoSS.DataModels;
-using MAutoSS.Services.Contracts;
-using System.Linq;
-using Bytes2you.Validation;
-using System.Text;
 using MAutoSS.ReportGenerator;
-using System.IO;
-using System;
+using MAutoSS.Services.Contracts;
 
 namespace MAutoSS.Services
 {
     public class DealershipService : IDealershipService
     {
-        private IGenericRepository<Dealership> dealershipRepo;
-        private IGenericRepository<Address> addressRepo;
-        private IGenericRepository<City> citiesRepo;
-        private IGenericRepository<Country> countriesRepo;
-        
+        private readonly IGenericRepository<Dealership> dealershipRepo;
+        private readonly IGenericRepository<Address> addressRepo;
+        private readonly IGenericRepository<City> citiesRepo;
+        private readonly IGenericRepository<Country> countriesRepo;
+
         public DealershipService(
             IGenericRepository<Dealership> dealershipRepo,
             IGenericRepository<Address> addressRepo,
@@ -55,10 +56,11 @@ namespace MAutoSS.Services
         {
             return this.dealershipRepo.GetAll().FirstOrDefault(x => x.Name == name);
         }
-        
+
         public void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName)
         {
-            var existingCountry = countriesRepo.GetAll().FirstOrDefault(x => x.Name == countryName);
+            var existingCountry = this.countriesRepo.GetAll().FirstOrDefault(x => x.Name == countryName);
+            Guard.WhenArgument(existingCountry, "existingCountry").IsNull().Throw();
 
             if (existingCountry == null)
             {
@@ -71,10 +73,10 @@ namespace MAutoSS.Services
                 this.countriesRepo.SaveChanges();
             }
 
-            existingCountry = countriesRepo.GetAll().First(x => x.Name == countryName);
+            existingCountry = this.countriesRepo.GetAll().First(x => x.Name == countryName);
 
-
-            var existingCity = citiesRepo.GetAll().FirstOrDefault(x => x.Name == cityName);
+            var existingCity = this.citiesRepo.GetAll().FirstOrDefault(x => x.Name == cityName);
+            Guard.WhenArgument(existingCity, "existingCity").IsNull().Throw();
 
             if (existingCity == null)
             {
@@ -87,7 +89,8 @@ namespace MAutoSS.Services
                 this.citiesRepo.Add(city);
                 this.citiesRepo.SaveChanges();
             }
-            existingCity = citiesRepo.GetAll().First(x => x.Name == cityName);
+
+            existingCity = this.citiesRepo.GetAll().First(x => x.Name == cityName);
 
             var dealership = new Dealership
             {
@@ -97,7 +100,8 @@ namespace MAutoSS.Services
             this.dealershipRepo.Add(dealership);
             this.dealershipRepo.SaveChanges();
 
-            var existingAdres = addressRepo.GetAll().FirstOrDefault(x => x.AddressText == addressText);
+            var existingAdres = this.addressRepo.GetAll().FirstOrDefault(x => x.AddressText == addressText);
+            Guard.WhenArgument(existingAdres, "existingAdres").IsNull().Throw();
 
             if (existingAdres == null)
             {
@@ -118,6 +122,8 @@ namespace MAutoSS.Services
             var builder = new StringBuilder();
             var allDealerships = this.GetAllDealerships();
 
+            Guard.WhenArgument(allDealerships, "allDealerships").IsNull().Throw();
+
             foreach (var dealer in allDealerships)
             {
                 builder.AppendLine($"{dealer.Name}--{dealer.Address.AddressText}--{dealer.Address.City.Name}");
@@ -133,6 +139,7 @@ namespace MAutoSS.Services
                 {
                     builder.AppendLine("Nobody is working here!!");
                 }
+
                 builder.AppendLine("----------------------");
             }
 

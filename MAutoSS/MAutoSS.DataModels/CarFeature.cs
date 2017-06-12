@@ -12,6 +12,7 @@ namespace MAutoSS.DataModels
         {
             this.cars = new HashSet<Car>();
         }
+        
         public int Id { get; set; }
 
         [Required]

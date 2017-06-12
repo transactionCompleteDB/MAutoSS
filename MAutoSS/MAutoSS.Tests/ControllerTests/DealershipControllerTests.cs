@@ -1,11 +1,9 @@
-﻿using MAutoSS.Services.Contracts;
+﻿using System;
+
+using MAutoSS.Services.Contracts;
 using MAutoSS.Web.Controllers;
-using MAutoSS.Web.Models.Address;
-using MAutoSS.Web.Models.Dealership;
 using Moq;
 using NUnit.Framework;
-using System;
-using Telerik.JustMock;
 
 namespace MAutoSS.Tests.ControllerTests
 {
@@ -15,49 +13,48 @@ namespace MAutoSS.Tests.ControllerTests
         [Test]
         public void CreateNewDealership_ShouldNotCall_serviceCreateNewDealership_WhenNoPassedParam()
         {
-            //arrange
+            // arrange
             var dealershipService = new Mock<IDealershipService>();
             var dealershipsController = new DealershipsController(dealershipService.Object);
 
-            //act
+            // act
             dealershipsController.CreateNewDealership();
 
-            //assert
+            // assert
             dealershipService.Verify(x => x.CreateNewDealership(null, null, null, null), Times.Never);
         }
 
         [Test]
         public void CreateNewDealership_ShouldThrow_WhenNoPassedParamIsNull()
         {
-            //arrange
+            // arrange
             var dealershipService = new Mock<IDealershipService>();
             var dealershipsController = new DealershipsController(dealershipService.Object);
 
-            //act & assert
+            // act & assert
             Assert.Throws<ArgumentNullException>(delegate { dealershipsController.CreateNewDealership(null); });
         }
 
+        // These TESTs requires unconstrained version of a Mocking tool:
 
-        //These TESTs requires unconstrained version of a Mocking tool:
-
-        //[Test]
-        //public void CreateNewDealership_ShouldNotThrow_WhenNoPassedParamIsNotNull()
-        //{
-        //    //arrange
+        // [Test]
+        // public void CreateNewDealership_ShouldNotThrow_WhenNoPassedParamIsNotNull()
+        // {
+        //    // arrange
         //    var dealershipService = new Mock<IDealershipService>();
         //    var dealershipInputModel = new Mock<DealershipInputModel>();
 
         //    var dealershipsController = new DealershipsController(dealershipService.Object);
 
-        //    //act
+        //    // act
 
-        //    //assert
+        //    // assert
         //    Assert.DoesNotThrow(delegate { dealershipsController.CreateNewDealership(dealershipInputModel.Object); });
-        //}
+        // }
 
-        //[Test]
-        //public void CreateNewDealership_ShouldCall_WhenThePassedParamIsValid()
-        //{
+        // [Test]
+        // public void CreateNewDealership_ShouldCall_WhenThePassedParamIsValid()
+        // {
         //    //arrange
         //    var dealershipService = Telerik.JustMock.Mock.Create<IDealershipService>();
         //    var dealershipInputModel = Telerik.JustMock.Mock.Create<DealershipInputModel>();
@@ -71,11 +68,11 @@ namespace MAutoSS.Tests.ControllerTests
 
         //    var dealershipsController = new DealershipsController(dealershipService);
 
-        //    //act
+        //    // act
         //    dealershipsController.CreateNewDealership(dealershipInputModel);
 
-        //    //
+        //    // 
         //    Telerik.JustMock.Mock.Assert(() => dealershipService.CreateNewDealership(null, null, null, null), Occurs.Once());
-        //}
+        // }
     }
 }
