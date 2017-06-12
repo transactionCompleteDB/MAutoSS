@@ -50,20 +50,20 @@
     <Compile Include="Contracts\ICarBrandsService.cs" />
     <Compile Include="Contracts\ICarFeaturesService.cs" />
     <Compile Include="Contracts\ICarModelsService.cs" />
-    <Compile Include="Contracts\ICustomerService.cs" />
     <Compile Include="Contracts\IDealershipService.cs" />
-    <Compile Include="Contracts\IDiscountService.cs" />
     <Compile Include="Contracts\IEmployeeService.cs" />
     <Compile Include="Contracts\IFuelTypeService.cs" />
     <Compile Include="Contracts\IVehicleTypeService.cs" />
-    <Compile Include="CustomerService.cs" />
+    <Compile Include="Contracts\SQLiteContracts\ICarService.cs" />
+    <Compile Include="Contracts\SQLiteContracts\IServiceInfoService.cs" />
     <Compile Include="DealershipService.cs" />
-    <Compile Include="DiscountService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="Contracts\ICarService.cs" />
     <Compile Include="Contracts\ITransmissionTypesService.cs" />
     <Compile Include="FuelTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLiteServices\CarService.cs" />
+    <Compile Include="SQLiteServices\ServiceInfoService.cs" />
     <Compile Include="TransmissionTypeService.cs" />
     <Compile Include="VehicleTypeService.cs" />
   </ItemGroup>
