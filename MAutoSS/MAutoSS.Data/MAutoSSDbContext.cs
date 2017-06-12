@@ -38,7 +38,7 @@ namespace MAutoSS.Data
         public virtual IDbSet<TransimssionType> TransimssionTypes { get; set; }
 
         public virtual IDbSet<VehicleType> VehicleTypes { get; set; }
-       
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

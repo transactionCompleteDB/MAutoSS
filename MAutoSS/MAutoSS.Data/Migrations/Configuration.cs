@@ -1,7 +1,8 @@
-using MAutoSS.Data.JsonImporter;
-using MAutoSS.DataModels;
 using System.Data.Entity.Migrations;
 using System.Linq;
+
+using MAutoSS.Data.JsonImporter;
+using MAutoSS.DataModels;
 
 namespace MAutoSS.Data.Migrations
 {
