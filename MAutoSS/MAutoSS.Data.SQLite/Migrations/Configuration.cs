@@ -1,21 +1,21 @@
+using System.Data.Entity.Migrations;
+using System.Data.SQLite.EF6.Migrations;
+
+using MAutoSS.DataModels.SQLite.Models;
+
 namespace MAutoSS.Data.SQLite.Migrations
 {
-    using MAutoSS.DataModels.SQLite.Models;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Data.SQLite.EF6.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<MAutoSS.Data.SQLite.MAutoSSDbContextSQLite>
+    public sealed class Configuration : DbMigrationsConfiguration<MAutoSS.Data.SQLite.MAutoSSDbContextSQLite>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            SetSqlGenerator("System.Data.SQLite", new SQLiteMigrationSqlGenerator());
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
+
+            this.SetSqlGenerator("System.Data.SQLite", new SQLiteMigrationSqlGenerator());
         }
 
-        protected override void Seed(MAutoSS.Data.SQLite.MAutoSSDbContextSQLite context)
+        protected override void Seed(MAutoSSDbContextSQLite context)
         {
             var serviceInof = new ServiceInfo();
             serviceInof.Description = "my Description";
