@@ -18,8 +18,7 @@ namespace MAutoSS.Services
         private IGenericRepository<Address> addressRepo;
         private IGenericRepository<City> citiesRepo;
         private IGenericRepository<Country> countriesRepo;
-
-
+        
         public DealershipService(
             IGenericRepository<Dealership> dealershipRepo,
             IGenericRepository<Address> addressRepo,
@@ -56,24 +55,27 @@ namespace MAutoSS.Services
         {
             return this.dealershipRepo.GetAll().FirstOrDefault(x => x.Name == name);
         }
-
-
+        
         public void CreateNewDealership(string dealershipName, string addressText, string cityName, string countryName)
         {
             var existingCountry = countriesRepo.GetAll().FirstOrDefault(x => x.Name == countryName);
+
             if (existingCountry == null)
             {
                 var country = new Country
                 {
                     Name = countryName
                 };
+
                 this.countriesRepo.Add(country);
                 this.countriesRepo.SaveChanges();
             }
+
             existingCountry = countriesRepo.GetAll().First(x => x.Name == countryName);
 
 
             var existingCity = citiesRepo.GetAll().FirstOrDefault(x => x.Name == cityName);
+
             if (existingCity == null)
             {
                 var city = new City
@@ -96,6 +98,7 @@ namespace MAutoSS.Services
             this.dealershipRepo.SaveChanges();
 
             var existingAdres = addressRepo.GetAll().FirstOrDefault(x => x.AddressText == addressText);
+
             if (existingAdres == null)
             {
                 var address = new Address
@@ -109,6 +112,7 @@ namespace MAutoSS.Services
                 this.addressRepo.SaveChanges();
             }
         }
+
         public void Export()
         {
             var builder = new StringBuilder();

@@ -170,10 +170,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\DatabaseConfig.cs" />
+    <Compile Include="App_Start\DbConfigs\PostgreDbConfig.cs" />
+    <Compile Include="App_Start\DbConfigs\SqlDbConfig.cs" />
+    <Compile Include="App_Start\DbConfigs\SQLiteDbConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DealershipsController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -192,6 +195,7 @@
     <Compile Include="Models\Employee\EmployeeInputModel.cs" />
     <Compile Include="Models\Employee\EmployeeMainInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Customer\CustomerModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -259,6 +263,10 @@
     <Content Include="Views\Car\LoadSelectedCarInfo.cshtml" />
     <Content Include="Views\Employee\EditEmployee.cshtml" />
     <Content Include="Views\Dealerships\ExportInfoDealer.cshtml" />
+    <Content Include="Views\Customer\LoadCustomersInfo.cshtml" />
+    <Content Include="Views\Shared\CustomerOptionsPartial.cshtml" />
+    <Content Include="Views\Customer\CreateNewCustomer.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -270,6 +278,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MAutoSS.Data.Postgre\MAutoSS.Data.Postgre.csproj">
+      <Project>{d3531cf5-7250-4dbc-b503-c96be00aeba9}</Project>
+      <Name>MAutoSS.Data.Postgre</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MAutoSS.Data.SQLite\MAutoSS.Data.SQLite.csproj">
+      <Project>{504c25c3-f520-40fc-be5f-a1cf4f28ac04}</Project>
+      <Name>MAutoSS.Data.SQLite</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MAutoSS.DataModels\MAutoSS.DataModels.csproj">
       <Project>{f38b81b1-8744-4137-8966-515e87cda9b6}</Project>
       <Name>MAutoSS.DataModels</Name>

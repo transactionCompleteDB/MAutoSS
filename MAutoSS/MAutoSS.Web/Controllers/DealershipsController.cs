@@ -25,8 +25,7 @@ namespace MAutoSS.Web.Controllers
         {
             return View();
         }
-
-        
+                
         [HttpGet]
         public ActionResult CreateNewDealership()
         {
