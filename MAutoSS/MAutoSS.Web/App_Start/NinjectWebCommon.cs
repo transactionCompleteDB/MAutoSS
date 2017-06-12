@@ -17,6 +17,10 @@ namespace MAutoSS.Web.App_Start
     using MAutoSS.Services;
     using MAutoSS.Services.Contracts;
     using System.Data.Entity;
+    using MAutoSS.Data.Postgre;
+    using MAutoSS.Data.Postgre.Contracts;
+    using Ninject.Activation;
+    using System.Linq;
 
     public static class NinjectWebCommon 
     {
@@ -69,11 +73,18 @@ namespace MAutoSS.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<MAutoSSDbContext>().InRequestScope();
-            kernel.Bind<IMAutoSSDbContext>().To<MAutoSSDbContext>().InRequestScope();
+
+            //SQL Server dbcontext bindings
+            //kernel.Bind<DbContext>().To<MAutoSSDbContext>().InRequestScope();
+            //kernel.Bind<IMAutoSSDbContext>().To<MAutoSSDbContext>().InRequestScope();
+
+            //PostgreSQL dbcontext bindings
+            kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>().InRequestScope();
+            kernel.Bind<IMAutoSSDbContextPostgre>().To<MAutoSSDbContextPostgre>().InRequestScope();
+
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
 
-            kernel.Bind<IDealershipService>().To<DealershipService>().InRequestScope();
+            kernel.Bind<IDealershipService>().To<DealershipService>();
             kernel.Bind<IEmployeeService>().To<EmployeeService>().InRequestScope();
             kernel.Bind<ICarBrandsService>().To<CarBrandsService>().InRequestScope();
             kernel.Bind<ICarModelsService>().To<CarModelsService>().InRequestScope();
@@ -81,7 +92,24 @@ namespace MAutoSS.Web.App_Start
             kernel.Bind<ICarFeaturesService>().To<CarFeaturesService>().InRequestScope();
             kernel.Bind<ITransmissionTypesService>().To<TransmissionTypeService>().InRequestScope();
             kernel.Bind<IVehicleTypeService>().To<VehicleTypeService>().InRequestScope();
-            kernel.Bind<IFuelTypeService>().To<FuelTypeService>().InRequestScope(); 
+            kernel.Bind<IFuelTypeService>().To<FuelTypeService>().InRequestScope();
+
+            kernel.Bind<ICustomerService>().To<CustomerService>().InRequestScope();
+            kernel.Bind<IDiscountService>().To<DiscountService>().InRequestScope();
         }
+
+        public static bool IsInjectingToRepositoryDataSourceOfNamespace(
+          this IRequest request, string entityNamespace)
+        {
+            if (request.ParentRequest.Service.GetGenericTypeDefinition() ==
+                 typeof(DbContext))
+            {
+                return request.ParentRequest.Service.GetGenericArguments().First().Namespace
+                     == entityNamespace;
+            }
+
+            return false;
+        }
+        
     }
 }
