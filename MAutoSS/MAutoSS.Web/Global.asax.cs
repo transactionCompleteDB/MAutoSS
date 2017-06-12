@@ -1,7 +1,8 @@
-﻿using MAutoSS.Web.App_Start;
-using System.Web;
+﻿using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
+
+using MAutoSS.Web.App_Start.DbConfigs;
 
 namespace MAutoSS.Web
 {
@@ -9,7 +10,10 @@ namespace MAutoSS.Web
     {
         protected void Application_Start()
         {
-            DatabaseConfig.Initialize();
+            SqlDbConfig.Initialize();
+            PostgreDbConfig.Initialize();
+            //SQLiteDbConfig.Initialize();
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
