@@ -138,7 +138,7 @@ namespace MAutoSS.Services
 
             var strInfo = builder.ToString();
             var pdf = new PDFReportGenerator();
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "PDFreport"));
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString().Replace("MAutoSS.Web", "PDFReports"));
             pdf.GenerateReport(path, "Information", strInfo);
         }
     }

@@ -10,7 +10,6 @@ namespace MAutoSS.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using MAutoSS.Data.Contracts;
     using MAutoSS.Data;
     using MAutoSS.Data.Repositories.Contracts;
     using MAutoSS.Data.Repositories;
@@ -18,11 +17,10 @@ namespace MAutoSS.Web.App_Start
     using MAutoSS.Services.Contracts;
     using System.Data.Entity;
     using MAutoSS.Data.Postgre;
-    using MAutoSS.Data.Postgre.Contracts;
-    using Ninject.Activation;
-    using System.Linq;
     using MAutoSS.DataModels.Postgre.Models;
     using MAutoSS.DataModels;
+    using MAutoSS.Data.Contracts;
+    using MAutoSS.Data.Postgre.Contracts;
 
     public static class NinjectWebCommon
     {
@@ -75,55 +73,55 @@ namespace MAutoSS.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //SQL Server dbcontext bindings
+            ////SQL Server dbcontext bindings
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<Address>>();
-
-            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<Car>>();
+                .WhenInjectedInto<IGenericRepository<Address>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<CarBrand>>();
+                .WhenInjectedInto<IGenericRepository<Car>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<CarFeature>>();
+                .WhenInjectedInto<IGenericRepository<CarBrand>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<CarModel>>();
+                .WhenInjectedInto<IGenericRepository<CarFeature>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<City>>();
+                .WhenInjectedInto<IGenericRepository<CarModel>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<Country>>();
+                .WhenInjectedInto<IGenericRepository<City>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<Dealership>>();
+                .WhenInjectedInto<IGenericRepository<Country>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-               .WhenInjectedInto<IGenericRepository<Employee>>();
+                .WhenInjectedInto<IGenericRepository<Dealership>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-               .WhenInjectedInto<IGenericRepository<FuelType>>();
+               .WhenInjectedInto<IGenericRepository<Employee>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<Sale>>();
+               .WhenInjectedInto<IGenericRepository<FuelType>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<TransimssionType>>();
+                .WhenInjectedInto<IGenericRepository<Sale>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContext>()
-                .WhenInjectedInto<IGenericRepository<VehicleType>>();
+                .WhenInjectedInto<IGenericRepository<TransimssionType>>().InRequestScope();
+
+            kernel.Bind<DbContext>().To<MAutoSSDbContext>()
+                .WhenInjectedInto<IGenericRepository<VehicleType>>().InRequestScope();
 
 
 
 
-            //PostgreSQL dbcontext bindings
+            ////PostgreSQL dbcontext bindings
             kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>()
-                .WhenInjectedInto<IGenericRepository<Customer>>();
+                .WhenInjectedInto<IGenericRepository<Customer>>().InRequestScope();
 
             kernel.Bind<DbContext>().To<MAutoSSDbContextPostgre>()
-                .WhenInjectedInto<IGenericRepository<Discount>>();
+                .WhenInjectedInto<IGenericRepository<Discount>>().InRequestScope();
 
 
 

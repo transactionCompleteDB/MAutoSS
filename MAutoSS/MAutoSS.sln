@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonFiles", "JsonFiles", "{
 		JsonFiles\employees.json = JsonFiles\employees.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PdfReports", "PdfReports", "{DED6038D-FC00-419E-BEF0-6F6179F695A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

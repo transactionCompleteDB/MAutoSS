@@ -294,6 +294,10 @@
       <Project>{604ed7b5-3a1f-42dc-9ab8-4c7729951fbd}</Project>
       <Name>MAutoSS.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MAutoSS.ExportGenerator\MAutoSS.ExportGenerator.csproj">
+      <Project>{e1a233bb-2d07-438d-a491-2fd1bbabd80a}</Project>
+      <Name>MAutoSS.ExportGenerator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MAutoSS.Services\MAutoSS.Services.csproj">
       <Project>{9c4297b3-c8e9-4dc8-be7b-18b21c8a7706}</Project>
       <Name>MAutoSS.Services</Name>
